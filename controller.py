@@ -60,13 +60,11 @@ class screen:
         self.controller.display.image(self.image)
 
     def draw_menu0_screen(self):
-        self.clear_screen()
         menu0_draw = ImageDraw.Draw(self.image)
         menu0_draw.text(self.title_location,'TEST_TITLE',font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):
-        self.clear_screen()
         menu1_draw = ImageDraw.Draw(self.image)
         menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.color_white)
         menu1_draw.polygon([(20,90),(220,90),(220,120),(20,120)],fill=self.color_white)

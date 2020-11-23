@@ -40,10 +40,12 @@ def main():
             GUI.controller.screen.draw_menu0_screen()
             if not GUI.controller.button_A.value:
                 GUI.current_menu += 1
+                GUI.controller.screen.clear_screen()
         if GUI.current_menu == 1:
             GUI.controller.screen.draw_menu1_screen()
             if not GUI.controller.button_B.value:
                 GUI.current_menu -= 1
+                GUI.controller.screen.clear_screen()
 
 
 
