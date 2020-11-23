@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib,time,smbus,threading,board,keyboard
+from controller import controller
 
 class user_interface:
     def __init__(self,line_ids=[],line_strings=[]):
@@ -10,6 +11,8 @@ class user_interface:
         for index,line_id in enumerate(line_ids):
             self.lines[line_id] = user_interface_line(id=line_id,
                                                       string=line_strings[index])
+        self.controller = controller()
+        self.controller.screen.clear_screen()
 
 
     def draw_menu_screen(self):
