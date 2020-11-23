@@ -62,6 +62,6 @@ class screen:
     def draw_menu1_screen(self):
         menu1_draw = ImageDraw.Draw(self.image)
         menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.text_color_white)
-        menu1_draw.polygon([(20,60),(220,60),(220,90),(20,90)],fill=self.text_color_white)
+        menu1_draw.polygon([(20,90),(220,90),(220,120),(20,120)],fill=self.text_color_white)
         menu1_draw.text(self.line2_location,'TEST LINE2',font=self.fnt,fill=self.text_color_black)
         self.controller.display.image(self.image)
