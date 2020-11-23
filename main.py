@@ -1,6 +1,6 @@
 # Modules
 import numpy as np
-import matplotlib,time,board,keyboard
+import matplotlib,time,board
 from colorsys import hsv_to_rgb
 from PIL import Image,ImageDraw,ImageFont
 
