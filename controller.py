@@ -48,20 +48,19 @@ class screen:
         self.line1_location = (20,60)
         self.line2_location = (20,90)
         self.fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
-        self.text_color_1 = "#00FF00"
-        self.text_color_black = "#000000"
-        self.text_color_white = "#FFFFFF"
+        self.color_black = "#000000"
+        self.color_white = "#FFFFFF"
         self.image = Image.new("RGB",(self.width,self.height))
         self.draw = ImageDraw.Draw(self.image)
         self.clear_screen()
 
     def clear_screen(self):
-        self.draw.rectangle((0,0,self.width,self.height),outline=0,fill=(255,0,0))
+        self.draw.rectangle((0,0,self.width,self.height),outline=0,fill=(0,0,0))
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):
         menu1_draw = ImageDraw.Draw(self.image)
-        menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.text_color_white)
-        menu1_draw.polygon([(20,90),(220,90),(220,120),(20,120)],fill=self.text_color_white)
-        menu1_draw.text(self.line2_location,'TEST LINE2',font=self.fnt,fill=self.text_color_black)
+        menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.color_white)
+        menu1_draw.polygon([(20,90),(220,90),(220,120),(20,120)],fill=self.color_white)
+        menu1_draw.text(self.line2_location,'TEST LINE2',font=self.fnt,fill=self.color_black)
         self.controller.display.image(self.image)
