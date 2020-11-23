@@ -38,7 +38,7 @@ class controller:
         self.backlight = DigitalInOut(board.D26)
         self.backlight.switch_to_output()
         self.backlight.value = True
-        self.screen = screen(self,self.display.width,self.display.height)
+        self.screen = screen(self)
 
 class screen:
     def __init__(self,controller):
