@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib,time,smbus,threading,board,keyboard
+import matplotlib,time,board
 from controller import controller
 
 class user_interface:
