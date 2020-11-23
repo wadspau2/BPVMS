@@ -45,6 +45,7 @@ class screen:
         self.controller = controller
         self.width = self.controller.display.width
         self.height = self.controller.display.height
+        self.title_location = (20,10)
         self.line1_location = (20,60)
         self.line2_location = (20,90)
         self.fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
@@ -56,6 +57,11 @@ class screen:
 
     def clear_screen(self):
         self.draw.rectangle((0,0,self.width,self.height),outline=0,fill=(0,0,0))
+        self.controller.display.image(self.image)
+
+    def draw_menu0_screen(self):
+        menu0_draw = ImageDraw.Draw(self.image)
+        menu0_draw.text(self.title_location,'TEST_TITLE',font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):

@@ -6,6 +6,7 @@ class user_interface:
     def __init__(self,line_ids=[],line_strings=[]):
         self.run = True
         self.current_line = 0
+        self.current_menu = 0
         self.lines = {}
         assert len(line_ids) == len(line_strings), "Number of ids (%r) does not equal number of strings (%r)" % (len(line_ids),len(line_strings))
         for index,line_id in enumerate(line_ids):

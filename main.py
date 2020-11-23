@@ -35,24 +35,13 @@ def main():
             print('Sensor LPS33HW initialized')
     GUI = user_interface()
 
-    # while GUI.run:
-    #     time_start = time.time()
-    #     time.sleep(GUI.get_wait_time(time_start))
-    #     if GUI.mode == 0:
-    #         GUI.draw_menu_screen()
-    #         if keyboard.is_pressed('up'):
-    #             GUI.get_new_option('U')
-    #         elif keyboard.is_pressed('D'):
-    #             GUI.get_new_option('D')
-    #         print('Mode:',GUI.mode)
-    #     elif GUI.mode == 1:
-    #         GUI.draw_testing_screen()
-    #     pass
-    #     # if GUI.mode == 0:
-    #     #     print('Menu')
-    #     # time.sleep(1)
-    if GUI.run:
-        GUI.controller.screen.draw_menu1_screen()
+    while GUI.run:
+        if GUI.current_menu == 0:
+            GUI.controller.screen.draw_menu0_screen()
+            if GUI.controller.button_A.value:
+                GUI.current_menu += 1
+        if GUI.current_menu == 1:
+            GUI.controller.screen.draw_menu1_screen()
 
 
 
