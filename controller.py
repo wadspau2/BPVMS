@@ -49,6 +49,8 @@ class screen:
         self.line2_location = (20,90)
         self.fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
         self.text_color_1 = "#00FF00"
+        self.text_color_black = "#000000"
+        self.text_color_white = "#FFFFFF"
         self.image = Image.new("RGB",(self.width,self.height))
         self.draw = ImageDraw.Draw(self.image)
         self.clear_screen()
@@ -59,6 +61,7 @@ class screen:
 
     def draw_menu1_screen(self):
         menu1_draw = ImageDraw.Draw(self.image)
-        menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.text_color_1)
-        menu1_draw.text(self.line2_location,'TEST LINE2',font=self.fnt,fill=self.text_color_1)
+        menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.text_color_white)
+        menu1_draw.polygon([(20,60),(220,60),(220,90),(20,90)],fill=self.text_colot_white)
+        menu1_draw.text(self.line2_location,'TEST LINE2',font=self.fnt,fill=self.text_color_black)
         self.controller.display.image(self.image)
