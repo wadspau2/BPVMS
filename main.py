@@ -42,6 +42,8 @@ def main():
                 GUI.current_menu += 1
         if GUI.current_menu == 1:
             GUI.controller.screen.draw_menu1_screen()
+            if GUI.controller.button_B.value:
+                GUI.current_menu -= 1
 
 
 
