@@ -38,11 +38,11 @@ def main():
     while GUI.run:
         if GUI.current_menu == 0:
             GUI.controller.screen.draw_menu0_screen()
-            if GUI.controller.button_A.value:
+            if not GUI.controller.button_A.value:
                 GUI.current_menu += 1
         if GUI.current_menu == 1:
             GUI.controller.screen.draw_menu1_screen()
-            if GUI.controller.button_B.value:
+            if not GUI.controller.button_B.value:
                 GUI.current_menu -= 1
 
 
