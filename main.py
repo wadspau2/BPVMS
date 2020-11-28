@@ -72,6 +72,8 @@ def main():
                 GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 3:
+            if GUI.units != GUI.controller.screen.menu3_line_index:
+                GUI.controller.screen.menu3_line_index = GUI.units
             GUI.controller.screen.draw_menu3_screen()
             if not GUI.controller.button_Up.value:
                 GUI.controller.screen.menu3_line_index -= 1
