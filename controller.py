@@ -1,7 +1,7 @@
 import time
 import random
 from colorsys import hsv_to_rgb
-import board
+import board,os
 from digitalio import DigitalInOut, Direction
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
@@ -41,6 +41,15 @@ class controller:
         self.USB_found = False
         self.screen = screen(self)
 
+    def get_USB_status(self):
+        basedir = '/dev/disk/by-path/'
+        for d in os.listdir(basedir):
+            if 'usb' in d and 'part' not in d:
+                path = os.path.join(basedir,d)
+                link = os.readlink(path)
+                print('/dev/',os.path.basename(link))
+        self.USB_found = False
+
 class screen:
     def __init__(self,controller):
         self.controller = controller
@@ -73,7 +82,8 @@ class screen:
         menu0_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         if not self.controller.USB_found:
             menu0_draw.text((self.line_start,self.line_list[0]),'Error:',font=self.fnt,fill=self.color_white)
-            menu0_draw.text((self.line_start,self.line_list[1]),'  No USB detected',font=self.fnt,fill=self.color_white)
+            menu0_draw.text((self.line_start,self.line_list[1]),'  Insert USB',font=self.fnt,fill=self.color_white)
+            self.controller.get_USB_status()
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):
