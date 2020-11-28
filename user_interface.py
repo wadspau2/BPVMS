@@ -16,6 +16,7 @@ class user_interface:
         self.controller = controller()
         self.controller.screen.clear_screen()
         self.units = 0  # 0:mmHg, 1:psi, 2:kPa
+        self.USB_found = False
 
 
     def draw_menu_screen(self):
