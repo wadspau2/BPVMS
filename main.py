@@ -37,11 +37,15 @@ def main():
 
     while GUI.run:
         if GUI.current_menu == 0:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu0_screen()
             if not GUI.controller.button_Select.value:
                 GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 1:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu1_screen()
             if not GUI.controller.button_Up.value:
                 GUI.controller.screen.menu1_line_index -= 1
@@ -67,13 +71,17 @@ def main():
                 GUI.current_menu = 0
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 2:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu2_screen()
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 3:
-            if GUI.units != GUI.controller.screen.menu3_line_index:
-                GUI.controller.screen.menu3_line_index = GUI.units
+            if GUI.previous_menu != GUI.current_menu:
+                if GUI.units != GUI.controller.screen.menu3_line_index:
+                    GUI.controller.screen.menu3_line_index = GUI.units
+                GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu3_screen()
             if not GUI.controller.button_Up.value:
                 GUI.controller.screen.menu3_line_index -= 1
@@ -100,11 +108,15 @@ def main():
                 GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 4:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu4_screen()
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 5:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu5_screen()
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 0
