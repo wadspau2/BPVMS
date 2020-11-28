@@ -45,10 +45,11 @@ class screen:
         self.controller = controller
         self.width = self.controller.display.width
         self.height = self.controller.display.height
-        self.title_location = (20,10)
+        self.title_location = (5,10)
         self.title_line_location = [(0,45),(self.width,45)]
         self.title_line_width = 4
         self.line_list = [60,90,120,150,180,210,240]
+        self.line_start = 5
         self.fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
         self.color_black = "#000000"
         self.color_white = "#FFFFFF"
@@ -77,10 +78,10 @@ class screen:
                             (self.width,self.line_list[self.menu1_line_index+1]),
                             (0,self.line_list[self.menu1_line_index+1])],
                             fill=self.color_white)
-        menu1_draw.text((20,self.line_list[0]),self.menu1_options[0],font=self.fnt,fill=self.color_white if self.menu1_line_index != 0 else self.color_black)
-        menu1_draw.text((20,self.line_list[1]),self.menu1_options[1],font=self.fnt,fill=self.color_white if self.menu1_line_index != 1 else self.color_black)
-        menu1_draw.text((20,self.line_list[2]),self.menu1_options[2],font=self.fnt,fill=self.color_white if self.menu1_line_index != 2 else self.color_black)
-        menu1_draw.text((20,self.line_list[3]),self.menu1_options[3],font=self.fnt,fill=self.color_white if self.menu1_line_index != 3 else self.color_black)
+        menu1_draw.text((self.line_start,self.line_list[0]),self.menu1_options[0],font=self.fnt,fill=self.color_white if self.menu1_line_index != 0 else self.color_black)
+        menu1_draw.text((self.line_start,self.line_list[1]),self.menu1_options[1],font=self.fnt,fill=self.color_white if self.menu1_line_index != 1 else self.color_black)
+        menu1_draw.text((self.line_start,self.line_list[2]),self.menu1_options[2],font=self.fnt,fill=self.color_white if self.menu1_line_index != 2 else self.color_black)
+        menu1_draw.text((self.line_start,self.line_list[3]),self.menu1_options[3],font=self.fnt,fill=self.color_white if self.menu1_line_index != 3 else self.color_black)
         self.controller.display.image(self.image)
 
     def draw_menu2_screen(self):
@@ -98,5 +99,11 @@ class screen:
     def draw_menu4_screen(self):
         menu4_draw = ImageDraw.Draw(self.image)
         menu4_draw.text(self.title_location,'RESET LPS33',font=self.fnt,fill=self.color_white)
+        menu4_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        self.controller.display.image(self.image)
+
+    def draw_menu5_screen(self):
+        menu5_draw = ImageDraw.Draw(self.image)
+        menu5_draw.text(self.title_location,'SHUT DOWN',font=self.fnt,fill=self.color_white)
         menu4_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         self.controller.display.image(self.image)

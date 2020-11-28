@@ -81,6 +81,11 @@ def main():
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
+        if GUI.current_menu == 5:
+            GUI.controller.screen.draw_menu5_screen()
+            if not GUI.controller.button_Left.value:
+                GUI.current_manu = 0
+                GUI.controller.screen.clear_screen
 
 
 
