@@ -43,12 +43,15 @@ class controller:
 
     def get_USB_status(self):
         basedir = '/dev/disk/by-path/'
+        temp_found = False
         for d in os.listdir(basedir):
             if 'usb' in d and 'part' not in d:
                 path = os.path.join(basedir,d)
                 link = os.readlink(path)
-                print('/dev/',os.path.basename(link))
-        self.USB_found = False
+                # print('/dev/',os.path.basename(link))
+                temp_found = True
+        self.USB_found = temp_found
+        return temp_found
 
 class screen:
     def __init__(self,controller):
@@ -84,6 +87,8 @@ class screen:
             menu0_draw.text((self.line_start,self.line_list[0]),'Error:',font=self.fnt,fill=self.color_white)
             menu0_draw.text((self.line_start,self.line_list[1]),'  Insert USB',font=self.fnt,fill=self.color_white)
             self.controller.get_USB_status()
+        else:
+            menu0_draw.text((self.line_start,self.line_list[0]),'USB Found',font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):
