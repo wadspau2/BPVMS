@@ -38,13 +38,33 @@ def main():
     while GUI.run:
         if GUI.current_menu == 0:
             GUI.controller.screen.draw_menu0_screen()
-            if not GUI.controller.button_A.value:
-                GUI.current_menu += 1
+            if not GUI.controller.button_Select.value:
+                GUI.current_menu = 1
                 GUI.controller.screen.clear_screen()
         if GUI.current_menu == 1:
             GUI.controller.screen.draw_menu1_screen()
+            if not GUI.controller.button_Up.value:
+                GUI.controller.screen.menu1_line_index -= 1
+                if GUI.controller.screen.menu1_line_index < 0:
+                    GUI.controller.screen.menu1_line_index = 0
+                GUI.controller.screen.clear_screen()
+            if not GUI.controller.button_Down.value:
+                GUI.controller.screen.menu1_line_index += 1
+                if GUI.controller.screen.menu1_line_index >= len(GUI.controller.screen.menu1_options):
+                    GUI.controller.screen.menu1_line_index = len(GUI.controller.screen.menu1_options) - 1
+                GUI.controller.screen.clear_screen()
+            if not GUI.controller.button_Select.value:
+                if GUI.controller.screen.menu1_line_index == 0:
+                    GUI.curent_menu = 2
+                if GUI.controller.screen.menu1_line_index == 1:
+                    GUI.current_menu = 3
+                if GUI.controller.screen.menu1_line_index == 2:
+                    GUI.current_menu = 4
+                if GUI.controller.screen.menu1_line_index == 3:
+                    GUI.current_menu = 5
+                GUI.controller.screen.clear_screen()
             if not GUI.controller.button_B.value:
-                GUI.current_menu -= 1
+                GUI.current_menu = 0
                 GUI.controller.screen.clear_screen()
 
 

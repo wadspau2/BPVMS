@@ -46,13 +46,16 @@ class screen:
         self.width = self.controller.display.width
         self.height = self.controller.display.height
         self.title_location = (20,10)
-        self.line1_location = (20,60)
-        self.line2_location = (20,90)
+        self.title_line_location = [(0,30),(self.width,30)]
+        self.title_line_width = 4
+        self.line_list = [60,90,120,150,180,210,240]
         self.fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
         self.color_black = "#000000"
         self.color_white = "#FFFFFF"
         self.image = Image.new("RGB",(self.width,self.height))
         self.draw = ImageDraw.Draw(self.image)
+        self.menu1_line_index = 0
+        self.menu1_options = ['OPTION 1','OPTION 2','OPTION 3','OPTION 4']
         self.clear_screen()
 
     def clear_screen(self):
@@ -61,12 +64,21 @@ class screen:
 
     def draw_menu0_screen(self):
         menu0_draw = ImageDraw.Draw(self.image)
-        menu0_draw.text(self.title_location,'TEST_TITLE',font=self.fnt,fill=self.color_white)
+        menu0_draw.text(self.title_location,'BPVMS',font=self.fnt,fill=self.color_white)
+        menu0_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):
         menu1_draw = ImageDraw.Draw(self.image)
-        menu1_draw.text(self.line1_location,'TEST LINE1',font=self.fnt,fill=self.color_white)
-        menu1_draw.polygon([(20,90),(220,90),(220,120),(20,120)],fill=self.color_white)
-        menu1_draw.text(self.line2_location,'TEST LINE2',font=self.fnt,fill=self.color_black)
+        menu1_draw.text(self.title_location,'MENU 1',font=self.fnt,fill=self.color_white)
+        menu1_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        menu1_draw.polygon([(0,self.line_list[self.menu1_line_index]),
+                            (self.width,self.line_list[self.menu1_line_index]),
+                            (self.width,self.line_list[self.menu1_line_index+1]),
+                            (0,self.line_list[self.menu1_line_index+1])],
+                            fill=self.color_white)
+        menu1_draw.text((20,self.line_list[0]),self.menu1_options[0],font=self.fnt,fill=self.color_white if self.menu1_line_index != 0 else self.color_black)
+        menu1_draw.text((20,self.line_list[1]),self.menu1_options[1],font=self.fnt,fill=self.color_white if self.menu1_line_index != 1 else self.color_black)
+        menu1_draw.text((20,self.line_list[2]),self.menu1_options[2],font=self.fnt,fill=self.color_white if self.menu1_line_index != 2 else self.color_black)
+        menu1_draw.text((20,self.line_list[3]),self.menu1_options[3],font=self.fnt,fill=self.color_white if self.menu1_line_index != 3 else self.color_black)
         self.controller.display.image(self.image)

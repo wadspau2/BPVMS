@@ -7,6 +7,7 @@ class user_interface:
         self.run = True
         self.current_line = 0
         self.current_menu = 0
+        self.previous_menu = 0
         self.lines = {}
         assert len(line_ids) == len(line_strings), "Number of ids (%r) does not equal number of strings (%r)" % (len(line_ids),len(line_strings))
         for index,line_id in enumerate(line_ids):
