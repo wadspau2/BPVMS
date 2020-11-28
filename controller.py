@@ -38,6 +38,7 @@ class controller:
         self.backlight = DigitalInOut(board.D26)
         self.backlight.switch_to_output()
         self.backlight.value = True
+        self.USB_previous = False
         self.USB_found = False
         self.screen = screen(self)
 
@@ -83,12 +84,18 @@ class screen:
         menu0_draw = ImageDraw.Draw(self.image)
         menu0_draw.text(self.title_location,'BPVMS',font=self.fnt,fill=self.color_white)
         menu0_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        self.controller.get_USB_status()
         if not self.controller.USB_found:
             menu0_draw.text((self.line_start,self.line_list[0]),'Error:',font=self.fnt,fill=self.color_white)
             menu0_draw.text((self.line_start,self.line_list[1]),'  Insert USB',font=self.fnt,fill=self.color_white)
-            self.controller.get_USB_status()
+            if self.controller.USB_previous:
+                self.controller.USB_previous = False
+                self.clear_screen()
         else:
             menu0_draw.text((self.line_start,self.line_list[0]),'USB Found',font=self.fnt,fill=self.color_white)
+            if not self.controller.USB_previous:
+                self.controller.USB_previous = True
+                self.clear_screen()
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):
