@@ -46,7 +46,7 @@ class screen:
         self.width = self.controller.display.width
         self.height = self.controller.display.height
         self.title_location = (20,10)
-        self.title_line_location = [(0,30),(self.width,30)]
+        self.title_line_location = [(0,45),(self.width,45)]
         self.title_line_width = 4
         self.line_list = [60,90,120,150,180,210,240]
         self.fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
