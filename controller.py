@@ -39,7 +39,7 @@ class controller:
         self.backlight.switch_to_output()
         self.backlight.value = True
         self.USB_last_time = time.time()
-        self.USB_refresh_time = 3.0
+        self.USB_refresh_time = 5.0
         self.USB_previous = False
         self.USB_found = False
         self.screen = screen(self)
@@ -75,6 +75,7 @@ class screen:
         self.menu1_line_index = 0
         self.menu2_line_index = 0
         self.menu3_line_index = 0
+        self.menu0_lockout = True
         self.menu1_options = ['Run Test','Change Units','Reset LPS33','Shutdown']
         self.menu3_options = ['mmHg','PSI','kPa']
         self.clear_screen()
@@ -95,11 +96,19 @@ class screen:
             if self.controller.USB_previous:
                 self.controller.USB_previous = False
                 self.clear_screen()
+            self.menu0_lockout = True
         else:
             menu0_draw.text((self.line_start,self.line_list[0]),'USB Found',font=self.fnt,fill=self.color_white)
+            menu0_draw.polygon([(0,self.line_list[2]),
+                                (self.width,self.line_list[2]),
+                                (self.width,self.line_list[3]),
+                                (0,self.line_list[3])],
+                                fill=self.color_white)
+            menu0_draw.text((self.line_start,self.line_list[2]),'Continue',font=self.fnt,fill=self.color_black)
             if not self.controller.USB_previous:
                 self.controller.USB_previous = True
                 self.clear_screen()
+            self.menu0_lockout = False
         self.controller.display.image(self.image)
 
     def draw_menu1_screen(self):

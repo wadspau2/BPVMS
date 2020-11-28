@@ -41,9 +41,10 @@ def main():
                 GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu0_screen()
             if not GUI.controller.button_Select.value:
-                GUI.current_menu = 1
-                GUI.controller.screen.menu1_line_index = 0
-                GUI.controller.screen.clear_screen()
+                if not GUI.controller.screen.menu0_lockout:
+                    GUI.current_menu = 1
+                    GUI.controller.screen.menu1_line_index = 0
+                    GUI.controller.screen.clear_screen()
         if GUI.current_menu == 1:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
