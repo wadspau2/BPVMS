@@ -55,7 +55,7 @@ def main():
                 GUI.controller.screen.clear_screen()
             if not GUI.controller.button_Select.value:
                 if GUI.controller.screen.menu1_line_index == 0:
-                    GUI.curent_menu = 2
+                    GUI.current_menu = 2
                 if GUI.controller.screen.menu1_line_index == 1:
                     GUI.current_menu = 3
                 if GUI.controller.screen.menu1_line_index == 2:
@@ -66,6 +66,21 @@ def main():
             if not GUI.controller.button_B.value:
                 GUI.current_menu = 0
                 GUI.controller.screen.clear_screen()
+        if GUI.current_menu == 2:
+            GUI.controller.screen.draw_menu2_screen()
+            if not GUI.controller.button_Left.value:
+                GUI.current_menu = 1
+            GUI.controller.screen.clear_screen()
+        if GUI.current_menu == 3:
+            GUI.controller.screen.draw_menu3_screen()
+            if not GUI.controller.button_Left.value:
+                GUI.current_menu = 1
+            GUI.controller.screen.clear_screen()
+        if GUI.current_menu == 4:
+            GUI.controller.screen.draw_menu4_screen()
+            if not GUI.controller.button_Left.value:
+                GUI.current_menu = 1
+            GUI.controller.screen.clear_screen()
 
 
 
