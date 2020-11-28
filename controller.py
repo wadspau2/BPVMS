@@ -87,7 +87,7 @@ class screen:
         menu0_draw = ImageDraw.Draw(self.image)
         menu0_draw.text(self.title_location,'BPVMS',font=self.fnt,fill=self.color_white)
         menu0_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
-        if (time.time()-self.controller.USB_last_time)>self.ctonroller.USB_refresh_time:
+        if (time.time()-self.controller.USB_last_time)>self.controller.USB_refresh_time:
             self.controller.get_USB_status()
         if not self.controller.USB_found:
             menu0_draw.text((self.line_start,self.line_list[0]),'Error:',font=self.fnt,fill=self.color_white)
