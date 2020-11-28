@@ -15,6 +15,7 @@ class user_interface:
                                                       string=line_strings[index])
         self.controller = controller()
         self.controller.screen.clear_screen()
+        self.units = 0  # 0:mmHg, 1:psi, 2:kPa
 
 
     def draw_menu_screen(self):
