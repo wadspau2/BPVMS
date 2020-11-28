@@ -105,5 +105,5 @@ class screen:
     def draw_menu5_screen(self):
         menu5_draw = ImageDraw.Draw(self.image)
         menu5_draw.text(self.title_location,'SHUT DOWN',font=self.fnt,fill=self.color_white)
-        menu4_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        menu5_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         self.controller.display.image(self.image)
