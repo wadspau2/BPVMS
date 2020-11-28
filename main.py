@@ -70,17 +70,17 @@ def main():
             GUI.controller.screen.draw_menu2_screen()
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 1
-            GUI.controller.screen.clear_screen()
+                GUI.controller.screen.clear_screen()
         if GUI.current_menu == 3:
             GUI.controller.screen.draw_menu3_screen()
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 1
-            GUI.controller.screen.clear_screen()
+                GUI.controller.screen.clear_screen()
         if GUI.current_menu == 4:
             GUI.controller.screen.draw_menu4_screen()
             if not GUI.controller.button_Left.value:
                 GUI.current_menu = 1
-            GUI.controller.screen.clear_screen()
+                GUI.controller.screen.clear_screen()
 
 
 
