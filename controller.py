@@ -38,6 +38,7 @@ class controller:
         self.backlight = DigitalInOut(board.D26)
         self.backlight.switch_to_output()
         self.backlight.value = True
+        self.USB_found = False
         self.screen = screen(self)
 
 class screen:
