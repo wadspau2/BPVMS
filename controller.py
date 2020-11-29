@@ -153,6 +153,12 @@ class screen:
         menu4_draw = ImageDraw.Draw(self.image)
         menu4_draw.text(self.title_location,'RESET LPS33',font=self.fnt,fill=self.color_white)
         menu4_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        menu4_draw.polygon([(0,self.line_list[0]),
+                            (self.width,self.line_list[0]),
+                            (self.width,self.line_list[1]),
+                            (0,self.line_list[1])],
+                            fill=self.color_white)
+        menu4_draw.text((self.line_start,self.line_list[0]),'Reset LPS35HW',font=self.fnt,fill=self.color_black)
         self.controller.display.image(self.image)
 
     # SHUTDOWN

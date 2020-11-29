@@ -8,34 +8,10 @@ from user_interface import user_interface
 _RUN_ON_PI = False
 _RATE = 10
 
-if _RUN_ON_PI:
-    import lps33hw_main
-    from digitalio import DigitalInOut,Direction
-    import adafruit_rgb_display.st7789 as st7789
-
-    # def get_wait_time(self,start_time):
-    #     elapsed_time = time.time() - start_time
-    #     sleep_time = (1/self.rate) - elapsed_time
-    #     return sleep_time
-
-def get_pressure():
-    if _RUN_ON_PI:
-        t_data,p_data = lps33hw_main.read()
-        return p_data
-    else:
-        return 0.0
-
 def main():
-    # Check if MS can communicate with SL
-    if _RUN_ON_PI:
-        if lps33hw_main.init() == False:
-            print('Sensor LPS33HW counld not be initialized')
-            exit(1)
-        else:
-            print('Sensor LPS33HW initialized')
     GUI = user_interface()
-
     while GUI.run:
+        # Start-up Menu
         if GUI.current_menu == 0:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
@@ -46,6 +22,7 @@ def main():
                     GUI.controller.screen.menu1_line_index = 0
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
+        # Main Menu
         if GUI.current_menu == 1:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
@@ -83,6 +60,7 @@ def main():
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
+        # Run Test
         if GUI.current_menu == 2:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
@@ -94,6 +72,7 @@ def main():
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
+        # Change Units Menu
         if GUI.current_menu == 3:
             if GUI.previous_menu != GUI.current_menu:
                 if GUI.units != GUI.controller.screen.menu3_line_index:
@@ -134,6 +113,7 @@ def main():
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
+        # Reset LPS35 Menu
         if GUI.current_menu == 4:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
@@ -145,6 +125,7 @@ def main():
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
+        # Shutdown Menu
         if GUI.current_menu == 5:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
@@ -154,10 +135,13 @@ def main():
                     GUI.current_menu = 0
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
+            elif not GUI.controller.button_Select.value:
+                if not GUI.button_pressed:
+                    GUI.reset_LPS35HW()
+                    GUI.current_menu = 1
+                    GUI.controller.screen.clear_screen()
             else:
                 GUI.button_pressed = False
-
-
 
 if __name__ == "__main__":
     main()
