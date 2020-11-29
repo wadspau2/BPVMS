@@ -140,6 +140,7 @@ def main():
                     GUI.reset_LPS35HW()
                     GUI.current_menu = 1
                     GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
 

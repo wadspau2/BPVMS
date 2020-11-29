@@ -76,7 +76,7 @@ class screen:
         self.menu2_line_index = 0
         self.menu3_line_index = 0
         self.menu0_lockout = True
-        self.menu1_options = ['Run Test','Change Units','Reset LPS33','Shutdown']
+        self.menu1_options = ['Run Test','Change Units','Reset LPS35','Shutdown']
         self.menu3_options = ['mmHg','PSI','kPa']
         self.clear_screen()
 
@@ -151,14 +151,14 @@ class screen:
     # RESET LPS33
     def draw_menu4_screen(self):
         menu4_draw = ImageDraw.Draw(self.image)
-        menu4_draw.text(self.title_location,'RESET LPS33',font=self.fnt,fill=self.color_white)
+        menu4_draw.text(self.title_location,'RESET LPS35',font=self.fnt,fill=self.color_white)
         menu4_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         menu4_draw.polygon([(0,self.line_list[0]),
                             (self.width,self.line_list[0]),
                             (self.width,self.line_list[1]),
                             (0,self.line_list[1])],
                             fill=self.color_white)
-        menu4_draw.text((self.line_start,self.line_list[0]),'Reset LPS35HW',font=self.fnt,fill=self.color_black)
+        menu4_draw.text((self.line_start,self.line_list[0]),'Reset LPS35',font=self.fnt,fill=self.color_black)
         self.controller.display.image(self.image)
 
     # SHUTDOWN
