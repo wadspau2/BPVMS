@@ -32,5 +32,5 @@ class user_interface:
         return PSI
 
     def hPa_to_kPa(self,pressure):
-        kPa = pressure*10
+        kPa = pressure*0.1
         return kPa
