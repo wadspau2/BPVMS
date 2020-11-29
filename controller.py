@@ -76,7 +76,7 @@ class screen:
         self.menu1_line_index = 0
         self.menu2_line_index = 0
         self.menu3_line_index = 0
-        self.menu4_line_index = 0
+        self.menu4_line_index = 3
         self.menu0_lockout = True
         self.menu1_options = ['Run Test','Change Units','Reset LPS35','Shutdown']
         self.menu3_options = ['mmHg','PSI','kPa']
