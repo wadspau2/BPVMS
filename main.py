@@ -123,6 +123,12 @@ def main():
                     GUI.current_menu = 1
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
+            elif not GUI.controller.button_Select.value:
+                if not GUI.button_pressed:
+                    GUI.reset_LPS35HW()
+                    GUI.current_menu = 1
+                    GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
         # Shutdown Menu
@@ -133,12 +139,6 @@ def main():
             if not GUI.controller.button_Left.value:
                 if not GUI.button_pressed:
                     GUI.current_menu = 0
-                    GUI.controller.screen.clear_screen()
-                GUI.button_pressed = True
-            elif not GUI.controller.button_Select.value:
-                if not GUI.button_pressed:
-                    GUI.reset_LPS35HW()
-                    GUI.current_menu = 1
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             else:
