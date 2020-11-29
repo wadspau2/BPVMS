@@ -9,7 +9,7 @@ class user_interface:
         self.current_line = 0
         self.current_menu = 0
         self.previous_menu = 0
-        self.controller = controller()
+        self.controller = controller(self)
         self.controller.screen.clear_screen()
         self.units = 0  # 0:mmHg, 1:psi, 2:kPa
         self.button_pressed = False
