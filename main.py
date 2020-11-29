@@ -117,6 +117,7 @@ def main():
         if GUI.current_menu == 4:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
+                GUI.controller.screen.menu4_line_index = 0
             GUI.controller.screen.draw_menu4_screen()
             if not GUI.controller.button_Up.value:
                 if not GUI.button_pressed:
