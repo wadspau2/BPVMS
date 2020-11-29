@@ -151,6 +151,12 @@ class screen:
         menu3_draw = ImageDraw.Draw(self.image)
         menu3_draw.text(self.title_location,'CHANGE UNITS',font=self.fnt,fill=self.color_white)
         menu3_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        for i in range(0,5):
+            menu3_draw.polygon([(0,self.line_list[i]),
+                                (self.width,self.line_list[i]),
+                                (self.width,self.line_list[i+1]),
+                                (0,self.line_list[i+1])],
+                                fill=self.color_black)
         menu3_draw.polygon([(0,self.line_list[self.menu3_line_index]),
                             (self.width,self.line_list[self.menu3_line_index]),
                             (self.width,self.line_list[self.menu3_line_index+1]),
