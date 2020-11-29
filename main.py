@@ -118,6 +118,20 @@ def main():
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu4_screen()
+            if not GUI.controller.button_Up.value:
+                if not GUI.button_pressed:
+                    GUI.controller.screen.menu4_line_index -= 1
+                    if GUI.controller.screen.menu4_line_index < 0:
+                        GUI.controller.screen.menu4_line_index = 0
+                    # GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            elif not GUI.controller.button_Down.value:
+                if not GUI.button_pressed:
+                    GUI.controller.screen.menu4_line_index += 1
+                    if GUI.controller.screen.menu4_line_index >= len(GUI.controller.screen.menu4_options):
+                        GUI.controller.screen.menu4_line_index = len(GUI.controller.screen.menu4_options) - 1
+                    # GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
             if not GUI.controller.button_Left.value:
                 if not GUI.button_pressed:
                     GUI.current_menu = 1
@@ -125,9 +139,14 @@ def main():
                 GUI.button_pressed = True
             elif not GUI.controller.button_Select.value:
                 if not GUI.button_pressed:
-                    GUI.reset_LPS35HW()
-                    GUI.current_menu = 1
-                    GUI.controller.screen.clear_screen()
+                    if GUI.controller.screen.menu4_line_index == 0:
+                        GUI.reset_LPS35HW(True)
+                        GUI.current_menu = 1
+                        GUI.controller.screen.clear_screen()
+                    if GUI.controller.screen.menu4_line_index == 1:
+                        GUI.reset_LPS35HW()
+                        GUI.current_menu = 1
+                        GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False

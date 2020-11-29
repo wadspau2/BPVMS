@@ -17,8 +17,11 @@ class user_interface:
         self.LPS35HW = adafruit_lps35hw.LPS35HW(self.i2c)
         self.LPS35HW.zero_pressure()
 
-    def reset_LPS35HW(self):
-        self.LPS35HW.zero_pressure()
+    def reset_LPS35HW(self,zero=False):
+        if zero:
+            self.LPS35HW.zero_pressure()
+        if not zero:
+            self.LPS35HW.reset_pressure()
 
     def hPa_to_mmHg(self,pressure):
         mmHg = pressure*100*0.00750062
