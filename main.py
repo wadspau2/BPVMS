@@ -32,14 +32,14 @@ def main():
                     GUI.controller.screen.menu1_line_index -= 1
                     if GUI.controller.screen.menu1_line_index < 0:
                         GUI.controller.screen.menu1_line_index = 0
-                    GUI.controller.screen.clear_screen()
+                    # GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             elif not GUI.controller.button_Down.value:
                 if not GUI.button_pressed:
                     GUI.controller.screen.menu1_line_index += 1
                     if GUI.controller.screen.menu1_line_index >= len(GUI.controller.screen.menu1_options):
                         GUI.controller.screen.menu1_line_index = len(GUI.controller.screen.menu1_options) - 1
-                    GUI.controller.screen.clear_screen()
+                    # GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             elif not GUI.controller.button_Select.value:
                 if not GUI.button_pressed:
@@ -51,12 +51,12 @@ def main():
                         GUI.current_menu = 4
                     if GUI.controller.screen.menu1_line_index == 3:
                         GUI.current_menu = 5
-                    GUI.controller.screen.clear_screen()
+                    # GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             elif not GUI.controller.button_B.value:
                 if not GUI.button_pressed:
                     GUI.current_menu = 0
-                    GUI.controller.screen.clear_screen()
+                    # GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
