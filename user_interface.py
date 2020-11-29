@@ -11,7 +11,7 @@ class user_interface:
         self.previous_menu = 0
         self.controller = controller(self)
         self.controller.screen.clear_screen()
-        self.units = 0  # 0:mmHg, 1:psi, 2:kPa
+        self.units = 3  # 0:mmHg, 1:psi, 2:kPa
         self.button_pressed = False
         self.i2c = board.I2C()
         self.LPS35HW = adafruit_lps35hw.LPS35HW(self.i2c)
