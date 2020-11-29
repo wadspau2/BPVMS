@@ -51,7 +51,7 @@ def main():
                         GUI.current_menu = 4
                     if GUI.controller.screen.menu1_line_index == 3:
                         GUI.current_menu = 5
-                    # GUI.controller.screen.clear_screen()
+                    GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             elif not GUI.controller.button_B.value:
                 if not GUI.button_pressed:
