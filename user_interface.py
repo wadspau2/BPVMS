@@ -19,3 +19,15 @@ class user_interface:
 
     def reset_LPS35HW(self):
         self.LPS35HW.zero_pressure()
+
+    def hPa_to_mmHg(self,pressure):
+        mmHg = pressure*100*0.00750062
+        return mmHg
+
+    def hPa_to_PSI(self,pressure):
+        PSI = pressure*100*0.000145038
+        return PSI
+
+    def hPa_to_kPa(self,pressure):
+        kPa = pressure*10
+        return kPa
