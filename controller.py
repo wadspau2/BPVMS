@@ -137,13 +137,13 @@ class screen:
                             (0,self.line_list[6])],
                             fill=self.color_black)
         if self.controller.user_interface.units == 0:
-            pressure_str = "P: {} {}".format(str(self.controller.user_interface.hPa_to_mmHg(self.controller.user_interface.LPS35HW.pressure)),"mmHg")
+            pressure_str = "P: {:.3f} {}".format(str(self.controller.user_interface.hPa_to_mmHg(self.controller.user_interface.LPS35HW.pressure)),"mmHg")
         elif self.controller.user_interface.units == 1:
-            pressure_str = "P: {} {}".format(str(self.controller.user_interface.hPa_to_PSI(self.controller.user_interface.LPS35HW.pressure)),"PSI")
+            pressure_str = "P: {:.3f} {}".format(str(self.controller.user_interface.hPa_to_PSI(self.controller.user_interface.LPS35HW.pressure)),"PSI")
         elif self.controller.user_interface.units == 2:
-            pressure_str = "P: {} {}".format(str(self.controller.user_interface.hPa_to_kPa(self.controller.user_interface.LPS35HW.pressure)),"kPa")
+            pressure_str = "P: {:.3f} {}".format(str(self.controller.user_interface.hPa_to_kPa(self.controller.user_interface.LPS35HW.pressure)),"kPa")
         else:
-            pressure_str = "P: {} {}".format(str(self.controller.user_interface.LPS35HW.pressure),"hPa")
+            pressure_str = "P: {:.3f} {}".format(str(self.controller.user_interface.LPS35HW.pressure),"hPa")
 
         menu1_draw.text((self.line_start,self.line_list[5]),pressure_str,font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)
