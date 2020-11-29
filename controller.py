@@ -139,11 +139,11 @@ class screen:
                             (0,self.line_list[6])],
                             fill=self.color_black)
         if self.controller.user_interface.units == 0:
-            pressure_str = "P: {:.3f} {}".format(self.controller.user_interface.hPa_to_mmHg(self.controller.user_interface.LPS35HW.pressure),"mmHg")
+            pressure_str = "P: {:.1f} {}".format(self.controller.user_interface.hPa_to_mmHg(self.controller.user_interface.LPS35HW.pressure),"mmHg")
         elif self.controller.user_interface.units == 1:
             pressure_str = "P: {:.3f} {}".format(self.controller.user_interface.hPa_to_PSI(self.controller.user_interface.LPS35HW.pressure),"PSI")
         elif self.controller.user_interface.units == 2:
-            pressure_str = "P: {:.3f} {}".format(self.controller.user_interface.hPa_to_kPa(self.controller.user_interface.LPS35HW.pressure),"kPa")
+            pressure_str = "P: {:.2f} {}".format(self.controller.user_interface.hPa_to_kPa(self.controller.user_interface.LPS35HW.pressure),"kPa")
         else:
             pressure_str = "P: {:.3f} {}".format(self.controller.user_interface.LPS35HW.pressure,"hPa")
 
