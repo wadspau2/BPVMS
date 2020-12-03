@@ -165,10 +165,10 @@ class screen:
                                 (self.width,self.line_list[i+1]),
                                 (0,self.line_list[i+1])],
                                 fill=self.color_black)
-        menu2_draw.polygon([(0,self.line_list[self.menu2_line_index]),
-                            (self.width,self.line_list[self.menu2_line_index]),
+        menu2_draw.polygon([(0,self.line_list[self.menu2_line_index+1]),
                             (self.width,self.line_list[self.menu2_line_index+1]),
-                            (0,self.line_list[self.menu2_line_index+1])],
+                            (self.width,self.line_list[self.menu2_line_index+2]),
+                            (0,self.line_list[self.menu2_line_index+2])],
                             fill=self.color_white)
         menu2_draw.text((self.line_start,self.line_list[0]),'Test Length:',font=self.fnt,fill=self.color_white)
         menu2_draw.text((self.line_start+5,self.line_list[1]),self.menu2_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
@@ -240,7 +240,7 @@ class screen:
                             (self.width,self.line_list[self.menu6_line_index+1]),
                             (0,self.line_list[self.menu6_line_index+1])],
                             fill=self.color_white)
-        menu6_draw.text((self.line_start,self.line_list[1]),self.menu6_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
+        menu6_draw.text((self.line_start,self.line_list[0]),self.menu6_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
         menu6_draw.text((self.line_start,self.line_list[3]),'Time Left:',font=self.fnt,fill=self.color_white)
         menu6_draw.text((self.line_start,self.line_list[4]),"{:.1f}s".format(self.user_interface.test_end_time-time.time()),font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)
