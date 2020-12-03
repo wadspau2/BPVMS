@@ -59,8 +59,9 @@ class controller:
         return temp_found
 
 class screen:
-    def __init__(self,controller):
+    def __init__(self,controller,user_interface):
         self.controller = controller
+        self.user_interface = user_interface
         self.width = self.controller.display.width
         self.height = self.controller.display.height
         self.title_location = (5,10)
@@ -77,10 +78,13 @@ class screen:
         self.menu2_line_index = 0
         self.menu3_line_index = 0
         self.menu4_line_index = 0
+        self.menu6_line_index = 0
         self.menu0_lockout = True
         self.menu1_options = ['Run Test','Change Units','Reset LPS35','Shutdown']
+        self.menu2_options = [str(self.user_interface.test_lengths[0])+'s',str(self.user_interface.test_lengths[1])+'s',str(self.user_interface.test_lengths[2])+'s','Manual']
         self.menu3_options = ['mmHg','PSI','kPa']
         self.menu4_options = ['Zero_LPS35','Abs_LPS35']
+        self.menu6_options = ['Stop Test']
         self.clear_screen()
 
     def clear_screen(self):
@@ -155,6 +159,22 @@ class screen:
         menu2_draw = ImageDraw.Draw(self.image)
         menu2_draw.text(self.title_location,'RUN TEST',font=self.fnt,fill=self.color_white)
         menu2_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        for i in range(0,5):
+            menu2_draw.polygon([(0,self.line_list[i]),
+                                (self.width,self.line_list[i]),
+                                (self.width,self.line_list[i+1]),
+                                (0,self.line_list[i+1])],
+                                fill=self.color_black)
+        menu2_draw.polygon([(0,self.line_list[self.menu2_line_index]),
+                            (self.width,self.line_list[self.menu2_line_index]),
+                            (self.width,self.line_list[self.menu2_line_index+1]),
+                            (0,self.line_list[self.menu2_line_index+1])],
+                            fill=self.color_white)
+        menu2_draw.text((self.line_start.self.line_list[0]),'Test Length:',font=self.fnt,fill=color_white)
+        menu2_draw.text((self.line_start+5,self.line_list[1]),self.menu2_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
+        menu2_draw.text((self.line_start+5,self.line_list[2]),self.menu2_options[1],font=self.fnt,fill=self.color_white if self.menu2_line_index != 1 else self.color_black)
+        menu2_draw.text((self.line_start+5,self.line_list[3]),self.menu2_options[2],font=self.fnt,fill=self.color_white if self.menu2_line_index != 2 else self.color_black)
+        menu2_draw.text((self.line_start+5,self.line_list[4]),self.menu2_options[3],font=self.fnt,fill=self.color_white if self.menu2_line_index != 3 else self.color_black)
         self.controller.display.image(self.image)
 
     # CHANGE UNITS
@@ -203,4 +223,24 @@ class screen:
         menu5_draw = ImageDraw.Draw(self.image)
         menu5_draw.text(self.title_location,'SHUT DOWN',font=self.fnt,fill=self.color_white)
         menu5_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        self.controller.display.image(self.image)
+
+    def draw_menu6_screen(self):
+        menu6_draw = ImageDraw.Draw(self.image)
+        menu6_draw.text(self.title_location,'RUN TEST',font=self.fnt,fill=self.color_white)
+        menu6_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        for i in range(0,5):
+            menu6_draw.polygon([(0,self.line_list[i]),
+                                (self.width,self.line_list[i]),
+                                (self.width,self.line_list[i+1]),
+                                (0,self.line_list[i+1])],
+                                fill=self.color_black)
+        menu6_draw.polygon([(0,self.line_list[self.menu6_line_index]),
+                            (self.width,self.line_list[self.menu6_line_index]),
+                            (self.width,self.line_list[self.menu6_line_index+1]),
+                            (0,self.line_list[self.menu6_line_index+1])],
+                            fill=self.color_white)
+        menu6_draw.text((self.line_start,self.line_list[1]),self.menu6_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
+        menu6_draw.text((self.line_start,self.line_list[3]),'Time Left:',font=self.fnt,fill=self.color_white)
+        menu6_draw.text((self.line_start,self.line_list[4]),"{:.1f}s".format(self.user_interface.test_end_time-time.time()),font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)

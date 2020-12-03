@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib,time,board
 from colorsys import hsv_to_rgb
 from PIL import Image,ImageDraw,ImageFont
-from user_interface import user_interface
+from user_interface import user_interface,csv_writer
 
 _RUN_ON_PI = False
 _RATE = 10
@@ -65,7 +65,47 @@ def main():
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu2_screen()
-            if not GUI.controller.button_Left.value:
+            if not GUI.controller.button_Up.value:
+                if not GUI.button_pressed:
+                    GUI.controller.screen.menu2_line_index -= 1
+                    if GUI.controller.screen.menu2_line_index < 0:
+                        GUI.controller.screen.menu2_line_index = 0
+                    # GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            elif not GUI.controller.button_Down.value:
+                if not GUI.button_pressed:
+                    GUI.controller.screen.menu2_line_index += 1
+                    if GUI.controller.screen.menu2_line_index >= len(GUI.controller.screen.menu2_options):
+                        GUI.controller.screen.menu2_line_index = len(GUI.controller.screen.menu2_options) - 1
+                    # GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            elif not GUI.controller.button_Select.value:
+                if not GUI.button_pressed:
+                    if GUI.controller.screen.menu2_line_index == 0:
+                        GUI.run_test = True
+                        GUI.test_start_time = time.time()
+                        GUI.test_end_time = GUI.test_start_time + GUI.test_lengths[0]
+                        GUI.current_menu = 6
+                        GUI.last_test_screen_draw = time.time()
+                    elif GUI.controller.screen.menu2_line_index == 1:
+                        GUI.run_test = True
+                        GUI.test_start_time = time.time()
+                        GUI.test_end_time = GUI.test_start_time + GUI.test_lengths[1]
+                        GUI.current_menu = 6
+                        GUI.last_test_screen_draw = time.time()
+                    elif GUI.controller.screen.menu2_line_index == 2:
+                        GUI.run_test = True
+                        GUI.test_start_time = time.time()
+                        GUI.test_end_time = GUI.test_start_time + GUI.test_lengths[2]
+                        GUI.current_menu = 6
+                        GUI.last_test_screen_draw = time.time()
+                    elif GUI.controller.screen.menu2_line_index == 3:
+                        GUI.run_test = True
+                        GUI.current_menu = 6
+                        GUI.last_test_screen_draw = time.time()
+                    GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            elif not GUI.controller.button_Left.value:
                 if not GUI.button_pressed:
                     GUI.current_menu = 1
                     GUI.controller.screen.clear_screen()
@@ -159,6 +199,33 @@ def main():
             if not GUI.controller.button_Left.value:
                 if not GUI.button_pressed:
                     GUI.current_menu = 0
+                    GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            else:
+                GUI.button_pressed = False
+        # Running Test Menu
+        if GUI.current_menu == 6:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
+                GUI.csv_writer = csv_writer()
+                GUI.csv_writer.start_csv()
+            if (time.time()-GUI.last_test_screen_draw) > (1/GUI.test_rate):
+                GUI.last_test_screen_draw = time.time()
+                GUI.controller.screen.draw_menu6_screen()
+                if GUI.run_test:
+                    pressure,temperature,unit = GUI.get_LPS35HW_measurement()
+                    GUI.csv_writer.write_line(time.time(),
+                                              pressure,
+                                              temperature,
+                                              unit)
+                if time.time() >= GUI.test_end_time:
+                    GUI.run_test = False
+                    GUI.current_menu = 2
+                    GUI.controller.screen.clear_screen()
+            if not GUI.controller.button_Select.value:
+                if not GUI.button_pressed:
+                    GUI.run_test = False
+                    GUI.current_menu = 2
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             else:
