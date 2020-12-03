@@ -170,7 +170,7 @@ class screen:
                             (self.width,self.line_list[self.menu2_line_index+1]),
                             (0,self.line_list[self.menu2_line_index+1])],
                             fill=self.color_white)
-        menu2_draw.text((self.line_start,self.line_list[0]),'Test Length:',font=self.fnt,fill=color_white)
+        menu2_draw.text((self.line_start,self.line_list[0]),'Test Length:',font=self.fnt,fill=self.color_white)
         menu2_draw.text((self.line_start+5,self.line_list[1]),self.menu2_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
         menu2_draw.text((self.line_start+5,self.line_list[2]),self.menu2_options[1],font=self.fnt,fill=self.color_white if self.menu2_line_index != 1 else self.color_black)
         menu2_draw.text((self.line_start+5,self.line_list[3]),self.menu2_options[2],font=self.fnt,fill=self.color_white if self.menu2_line_index != 2 else self.color_black)
