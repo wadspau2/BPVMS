@@ -171,10 +171,10 @@ class screen:
                             (0,self.line_list[self.menu2_line_index+2])],
                             fill=self.color_white)
         menu2_draw.text((self.line_start,self.line_list[0]),'Test Length:',font=self.fnt,fill=self.color_white)
-        menu2_draw.text((self.line_start+5,self.line_list[1]),self.menu2_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
-        menu2_draw.text((self.line_start+5,self.line_list[2]),self.menu2_options[1],font=self.fnt,fill=self.color_white if self.menu2_line_index != 1 else self.color_black)
-        menu2_draw.text((self.line_start+5,self.line_list[3]),self.menu2_options[2],font=self.fnt,fill=self.color_white if self.menu2_line_index != 2 else self.color_black)
-        menu2_draw.text((self.line_start+5,self.line_list[4]),self.menu2_options[3],font=self.fnt,fill=self.color_white if self.menu2_line_index != 3 else self.color_black)
+        menu2_draw.text((self.line_start+10,self.line_list[1]),self.menu2_options[0],font=self.fnt,fill=self.color_white if self.menu2_line_index != 0 else self.color_black)
+        menu2_draw.text((self.line_start+10,self.line_list[2]),self.menu2_options[1],font=self.fnt,fill=self.color_white if self.menu2_line_index != 1 else self.color_black)
+        menu2_draw.text((self.line_start+10,self.line_list[3]),self.menu2_options[2],font=self.fnt,fill=self.color_white if self.menu2_line_index != 2 else self.color_black)
+        menu2_draw.text((self.line_start+10,self.line_list[4]),self.menu2_options[3],font=self.fnt,fill=self.color_white if self.menu2_line_index != 3 else self.color_black)
         self.controller.display.image(self.image)
 
     # CHANGE UNITS
@@ -227,7 +227,7 @@ class screen:
 
     def draw_menu6_screen(self):
         menu6_draw = ImageDraw.Draw(self.image)
-        menu6_draw.text(self.title_location,'RUN TEST',font=self.fnt,fill=self.color_white)
+        menu6_draw.text(self.title_location,'RUNNING TEST',font=self.fnt,fill=self.color_white)
         menu6_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         for i in range(0,5):
             menu6_draw.polygon([(0,self.line_list[i]),
