@@ -101,6 +101,8 @@ def main():
                         GUI.last_test_screen_draw = time.time()
                     elif GUI.controller.screen.menu2_line_index == 3:
                         GUI.run_test = True
+                        GUI.test_start_time = time.time()
+                        GUI.test_end_time = None
                         GUI.current_menu = 6
                         GUI.last_test_screen_draw = time.time()
                     GUI.controller.screen.clear_screen()
@@ -218,11 +220,26 @@ def main():
                                               pressure,
                                               temperature,
                                               unit)
-                if time.time() >= GUI.test_end_time:
-                    GUI.run_test = False
-                    GUI.current_menu = 2
-                    GUI.controller.screen.clear_screen()
-            if not GUI.controller.button_Select.value:
+                if GUI.test_end_time is not None:
+                    if time.time() >= GUI.test_end_time:
+                        GUI.run_test = False
+                        GUI.current_menu = 2
+                        GUI.controller.screen.clear_screen()
+            if not GUI.controller.button_Up.value:
+                if not GUI.button_pressed:
+                    GUI.controller.screen.menu6_line_index -= 1
+                    if GUI.controller.screen.menu6_line_index < 0:
+                        GUI.controller.screen.menu6_line_index = 0
+                    # GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            elif not GUI.controller.button_Down.value:
+                if not GUI.button_pressed:
+                    GUI.controller.screen.menu6_line_index += 1
+                    if GUI.controller.screen.menu6_line_index >= len(GUI.controller.screen.menu6_options):
+                        GUI.controller.screen.menu6_line_index = len(GUI.controller.screen.menu6_options) - 1
+                    # GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            elif not GUI.controller.button_Select.value:
                 if not GUI.button_pressed:
                     GUI.run_test = False
                     GUI.current_menu = 2
