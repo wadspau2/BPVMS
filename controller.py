@@ -43,7 +43,7 @@ class controller:
         self.USB_refresh_time = 5.0
         self.USB_previous = False
         self.USB_found = False
-        self.screen = screen(self)
+        self.screen = screen(self,self.user_interface)
 
     def get_USB_status(self):
         basedir = '/dev/disk/by-path/'
