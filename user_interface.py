@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib,time,board
+import matplotlib,time,board,csv,os
 from controller import controller
 import adafruit_lps35hw
 
@@ -60,7 +60,8 @@ class user_interface:
 
 class csv_writer:
     def __init__(self):
-        pass
+        print(os.getcwd())
+        # self.writer = csv.writer(csvfile)
 
     def start_csv(self):
         pass
