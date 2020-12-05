@@ -60,7 +60,7 @@ class user_interface:
 
 class csv_writer:
     def __init__(self):
-        USB_path = get_USB_path()
+        USB_path = self.get_USB_path()
         print(os.getcwd())
         # self.writer = csv.writer(csvfile)
 
