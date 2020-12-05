@@ -70,7 +70,7 @@ class csv_writer:
             if 'usb' in d and 'part' not in d:
                 path = os.path.join(basedir,d)
                 link = os.readlink(path)
-                print('/dev/''+os.path.basename(link))
+                print('/dev/'+os.path.basename(link))
                 USB_path = '/dev/'+os.path.basename(link)
                 print(os.listdir(USB_path))
         return True
