@@ -72,7 +72,8 @@ class csv_writer:
                 link = os.readlink(path)
                 print('/dev/'+os.path.basename(link))
                 USB_path = '/dev/'+os.path.basename(link)
-                print(os.listdir(USB_path))
+                mount_str = "mount " + USB_path + " /USB_MOUNT"
+                os.system(mount_str)
         return True
 
     def start_csv(self):
