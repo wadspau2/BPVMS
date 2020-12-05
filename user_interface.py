@@ -60,8 +60,18 @@ class user_interface:
 
 class csv_writer:
     def __init__(self):
+        USB_path = get_USB_path()
         print(os.getcwd())
         # self.writer = csv.writer(csvfile)
+
+    def get_USB_path(self):
+        basedir = '/dev/disk/by-path/'
+        for d in os.listdir(basedir):
+            if 'usb' in d and 'part' not in d:
+                path = os.path.join(basedir,d)
+                link = os.readlink(path)
+                print('/dev/',os.path.basename(link))
+        return True
 
     def start_csv(self):
         pass
