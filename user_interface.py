@@ -72,7 +72,9 @@ class csv_writer:
                 if split == 'Test':
                     max_folder_num = max(max_folder_num,split_folder[index+1])
         test_str = 'Test_'+str(max_folder_num)
-        os.mkdir(os.path.join(data_folder,test_str))
+        test_folder = os.path.join(data_folder,test_str)
+        print('Test Folder:',test_folder)
+        os.mkdir(test_folder)
 
             # os.mkdir(os.path.join(data_folder,timestr))
         # self.writer = csv.writer(csvfile)
