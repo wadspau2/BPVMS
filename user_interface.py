@@ -67,6 +67,8 @@ class csv_writer:
         for folder in directory_contents:
             print('folder:',folder)
             split_folder = folder.split("_")
+            for split in split_folder:
+                print(split)
             # os.mkdir(os.path.join(data_folder,timestr))
         # self.writer = csv.writer(csvfile)
 
