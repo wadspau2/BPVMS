@@ -77,7 +77,7 @@ class csv_writer:
         GUI.test_str = test_str
         write_file = os.path.join(test_folder,'data.csv')
         # with open(write_file,'w') as file:
-        self.writer = csv.writer(file,delimiter=',')
+        self.writer = csv.writer(write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
 
 
