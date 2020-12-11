@@ -227,7 +227,7 @@ class screen:
 
     def draw_menu6_screen(self):
         menu6_draw = ImageDraw.Draw(self.image)
-        menu6_draw.text(self.title_location,'RUNNING TEST',font=self.fnt,fill=self.color_white)
+        menu6_draw.text(self.title_location,self.user_interface.test_str,font=self.fnt,fill=self.color_white)
         menu6_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         for i in range(0,5):
             menu6_draw.polygon([(0,self.line_list[i]),

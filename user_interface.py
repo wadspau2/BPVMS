@@ -59,7 +59,7 @@ class user_interface:
         return kPa
 
 class csv_writer:
-    def __init__(self):
+    def __init__(self,GUI):
         # USB_path = self.get_USB_path()
         print(os.getcwd())
         data_folder = os.getcwd()+'/data'
@@ -75,6 +75,7 @@ class csv_writer:
         test_folder = os.path.join(data_folder,test_str)
         print('Test Folder:',test_folder)
         os.mkdir(test_folder)
+        GUI.test_str = test_str
 
             # os.mkdir(os.path.join(data_folder,timestr))
         # self.writer = csv.writer(csvfile)
