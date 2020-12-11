@@ -64,11 +64,16 @@ class csv_writer:
         print(os.getcwd())
         data_folder = os.getcwd()+'/data'
         directory_contents = os.listdir(data_folder)
+        max_folder_num = 0
         for folder in directory_contents:
             print('folder:',folder)
             split_folder = folder.split("_")
-            for split in split_folder:
-                print(split)
+            for index,split in enumerate(split_folder):
+                if split == 'Test':
+                    max_folder_num = max(max_folder_num,split_folder[index+1])
+        test_str = 'Test_'+str(max_folder_num)
+        os.mkdir(os.path.joint(data_folder,test_str))
+
             # os.mkdir(os.path.join(data_folder,timestr))
         # self.writer = csv.writer(csvfile)
 
