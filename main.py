@@ -209,8 +209,8 @@ def main():
         if GUI.current_menu == 6:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
-                GUI.csv_writer = csv_writer()
-                GUI.csv_writer.start_csv(GUI)
+                GUI.csv_writer = csv_writer(GUI)
+                GUI.csv_writer.start_csv()
             if (time.time()-GUI.last_test_screen_draw) > (1/GUI.test_rate):
                 GUI.last_test_screen_draw = time.time()
                 GUI.controller.screen.draw_menu6_screen()
