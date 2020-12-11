@@ -64,9 +64,10 @@ class csv_writer:
         print(os.getcwd())
         data_folder = os.getcwd()+'/data'
         directory_contents = os.listdir(data_folder)
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        if timestr not in directory_contents:
-            os.mkdir(os.path.join(data_folder,timestr))
+        for folder in directory_contents:
+            print('folder:',folder)
+            split_folder = folder.split("_")
+            # os.mkdir(os.path.join(data_folder,timestr))
         # self.writer = csv.writer(csvfile)
 
     def get_USB_path(self):
