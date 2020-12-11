@@ -95,12 +95,13 @@ class csv_writer:
         return True
 
     def analyze_data(self):
-        reader = csv.DictReader(self.write_file)
-        time_list,pressure,units = [],[],[]
-        for row in reader:
-            time_list.append(row['time'])
-            pressure.append(row['pressure'])
-            units.append(row['units'])
+        with open(self.write_file) as csvfile:
+            reader = csv.DictReader(csvfile)
+            time_list,pressure,units = [],[],[]
+            for row in reader:
+                time_list.append(row['time'])
+                pressure.append(row['pressure'])
+                units.append(row['units'])
         print('time_list:',time_list)
         print('pressure:',pressure)
         print('units:',units)
