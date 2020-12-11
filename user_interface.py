@@ -76,9 +76,9 @@ class csv_writer:
         os.mkdir(test_folder)
         GUI.test_str = test_str
         write_file = os.path.join(test_folder,'data.csv')
-        with open(write_file,'w') as file:
-            self.writer = csv.writer(file,delimiter=',')
-            self.writer.writerow(['time','pressure','units'])
+        # with open(write_file,'w') as file:
+        self.writer = csv.writer(file,delimiter=',')
+        self.writer.writerow(['time','pressure','units'])
 
 
             # os.mkdir(os.path.join(data_folder,timestr))
