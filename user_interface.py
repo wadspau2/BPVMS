@@ -66,7 +66,6 @@ class csv_writer:
         directory_contents = os.listdir(data_folder)
         max_folder_num = 0
         for folder in directory_contents:
-            print('folder:',folder)
             split_folder = folder.split("_")
             for index,split in enumerate(split_folder):
                 if split == 'Test':

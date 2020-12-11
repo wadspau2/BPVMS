@@ -218,7 +218,6 @@ def main():
                     pressure,temperature,unit = GUI.get_LPS35HW_measurement()
                     GUI.csv_writer.write_line(time.time(),
                                               pressure,
-                                              temperature,
                                               unit)
                 if GUI.test_end_time is not None:
                     if time.time() >= GUI.test_end_time:
