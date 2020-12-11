@@ -70,7 +70,7 @@ class csv_writer:
             split_folder = folder.split("_")
             for index,split in enumerate(split_folder):
                 if split == 'Test':
-                    max_folder_num = max(max_folder_num,int(split_folder[index+1]))
+                    max_folder_num = max(max_folder_num,int(split_folder[index+1]+1))
         test_str = 'Test_'+str(max_folder_num)
         test_folder = os.path.join(data_folder,test_str)
         print('Test Folder:',test_folder)
