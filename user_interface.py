@@ -60,8 +60,11 @@ class user_interface:
 
 class csv_writer:
     def __init__(self):
-        USB_path = self.get_USB_path()
+        # USB_path = self.get_USB_path()
         print(os.getcwd())
+        data_folder = os.getcwd()+'/data'
+        directory_contents = os.listdir(data_folder)
+        print(directory_contents)
         # self.writer = csv.writer(csvfile)
 
     def get_USB_path(self):
@@ -72,7 +75,7 @@ class csv_writer:
                 link = os.readlink(path)
                 print('/dev/'+os.path.basename(link))
                 USB_path = '/dev/'+os.path.basename(link)
-                mount_str = "mount " + USB_path + " /USB_MOUNT"
+                mount_str = "sudo mount " + USB_path + " /USB_MOUNT"
                 os.system(mount_str)
         return True
 
