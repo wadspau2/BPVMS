@@ -97,7 +97,7 @@ class csv_writer:
     def analyze_data(self):
         reader = csv.DictReader(self.write_file)
         time_list,pressure,units = [],[],[]
-        for row in csv_reader:
+        for row in reader:
             time_list.append(row['time'])
             pressure.append(row['pressure'])
             units.append(row['units'])
