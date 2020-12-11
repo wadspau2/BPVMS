@@ -75,9 +75,10 @@ class csv_writer:
         print('Test Folder:',test_folder)
         os.mkdir(test_folder)
         GUI.test_str = test_str
-        with open(os.path.join(test_folder,'data.csv'),'w') as file:
-            writer = csv.writer(file,delimiter=',')
-            writer.writerow(['time','pressure','units'])
+        write_file = os.path.joint(test_folder,'data.csv')
+        with open(write_file,'w') as file:
+            self.writer = csv.writer(file,delimiter=',')
+            self.writer.writerow(['time','pressure','units'])
 
 
             # os.mkdir(os.path.join(data_folder,timestr))
@@ -99,4 +100,4 @@ class csv_writer:
         pass
 
     def write_line(self,time,pressure,units):
-        pass
+        self.writer.writerow([time,pressure,units])
