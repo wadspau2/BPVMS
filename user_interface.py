@@ -96,6 +96,7 @@ class csv_writer:
         return True
 
     def analyze_data(self):
+        self.write_file.close()
         with open(self.file_path) as csvfile:
             reader = csv.DictReader(csvfile)
             time_list,pressure,units = [],[],[]
