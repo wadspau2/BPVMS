@@ -61,7 +61,6 @@ class user_interface:
 class csv_writer:
     def __init__(self,GUI):
         # USB_path = self.get_USB_path()
-        print(os.getcwd())
         data_folder = os.getcwd()+'/data'
         directory_contents = os.listdir(data_folder)
         max_folder_num = 0
@@ -75,9 +74,8 @@ class csv_writer:
         print('Test Folder:',test_folder)
         os.mkdir(test_folder)
         GUI.test_str = test_str
-        write_file = open(os.path.join(test_folder,'data.csv'),'w')
-        # with open(write_file,'w') as file:
-        self.writer = csv.writer(write_file,delimiter=',')
+        self.write_file = open(os.path.join(test_folder,'data.csv'),'w')
+        self.writer = csv.writer(self.write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
 
 
@@ -96,8 +94,17 @@ class csv_writer:
                 os.system(mount_str)
         return True
 
-    def start_csv(self):
-        pass
+    def analyze_data(self):
+        reader = csv.DictReader(self.write_file)
+        time_list,pressure,units = [],[],[]
+        for row in csv_reader:
+            time_list.append(row['time'])
+            pressure.append(row['pressure'])
+            units.append(row['units'])
+        print('time_list:',time_list)
+        print('pressure:',pressure)
+        print('units:',units)
+
 
     def write_line(self,time,pressure,units):
         self.writer.writerow([time,pressure,units])

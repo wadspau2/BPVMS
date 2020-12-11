@@ -210,7 +210,6 @@ def main():
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
                 GUI.csv_writer = csv_writer(GUI)
-                GUI.csv_writer.start_csv()
             if (time.time()-GUI.last_test_screen_draw) > (1/GUI.test_rate):
                 GUI.last_test_screen_draw = time.time()
                 GUI.controller.screen.draw_menu6_screen()
@@ -222,6 +221,7 @@ def main():
                 if GUI.test_end_time is not None:
                     if time.time() >= GUI.test_end_time:
                         GUI.run_test = False
+                        GUI.csv_writer.analyze_data()
                         GUI.current_menu = 2
                         GUI.controller.screen.clear_screen()
             if not GUI.controller.button_Up.value:
@@ -241,6 +241,7 @@ def main():
             elif not GUI.controller.button_Select.value:
                 if not GUI.button_pressed:
                     GUI.run_test = False
+                    GUI.csv_writer.analyze_data()
                     GUI.current_menu = 2
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
