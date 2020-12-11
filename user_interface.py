@@ -74,7 +74,8 @@ class csv_writer:
         print('Test Folder:',test_folder)
         os.mkdir(test_folder)
         GUI.test_str = test_str
-        self.write_file = open(os.path.join(test_folder,'data.csv'),'w')
+        self.file_path = os.path.join(test_folder,'data.csv')
+        self.write_file = open(self.file_path,'w')
         self.writer = csv.writer(self.write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
 
@@ -95,7 +96,7 @@ class csv_writer:
         return True
 
     def analyze_data(self):
-        with open(self.write_file) as csvfile:
+        with open(self.file_path) as csvfile:
             reader = csv.DictReader(csvfile)
             time_list,pressure,units = [],[],[]
             for row in reader:
