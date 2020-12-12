@@ -118,6 +118,12 @@ class csv_writer:
         max_vacuum = max(vacuum)
         print('Max Pressure:',max_pressure)
         print('Max Vacuum:',max_vacuum)
+        txt_file = open(os.path.joint(self.test_folder,self.test_str + '_Results.txt','w'))
+        txt_file.write(self.test_str + ' Results\n\n')
+        txt_file.write('Max Pressure: ' + str(max_pressure) + ' ' + units[0]\n)
+        txt_file.write('Max Vacuum: ' + str(max_vacuum) + ' ' + units[0]\n)
+        txt_file.close()
+        return max_pressure,max_vacuum
 
 
     def write_line(self,time,pressure,units):
