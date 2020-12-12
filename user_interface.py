@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import time,board,csv,os
+import time,board,csv,os,statistics
 from controller import controller
 import adafruit_lps35hw
 
@@ -115,13 +115,18 @@ class csv_writer:
         plt.ylabel('Vacuum ('+units[0]+')')
         fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'))
         max_pressure = max(pressure)
+        avg_pressure = statistics.mean(pressure)
         max_vacuum = max(vacuum)
+        avg_vacuum = statistics.mean(vacuum)
         print('Max Pressure:',max_pressure)
         print('Max Vacuum:',max_vacuum)
         txt_file = open(os.path.join(self.test_folder,self.test_str + '_Results.txt'),'w')
         txt_file.write(self.test_str + ' Results\n\n')
+        txt_file.write('Time: {} s\n'.format(int(time_list[-1])))
         txt_file.write('Max Pressure: {:.3f} {}\n'.format(max_pressure,units[0]))
-        txt_file.write('Max Vacuum: ' + str(max_vacuum) + ' ' + units[0] + '\n')
+        txt_file.write('Average Pressure: {:.3f} {}\n'.format(avg_pressure,units[0]))
+        txt_file.write('Max Vacuum: {:.3f} {}\n'.format(max_vacuum,units[0]))
+        txt_file.write('Average Vacuum: {:.3f} {}\n'.format(avg_vacuum,units[0]))
         txt_file.close()
         return max_pressure,max_vacuum
 
