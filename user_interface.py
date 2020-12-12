@@ -100,21 +100,22 @@ class csv_writer:
         self.write_file.close()
         with open(self.file_path) as csvfile:
             reader = csv.DictReader(csvfile)
-            time_list,pressure,units = [],[],[]
+            time_list,pressure,units,vacuum = [],[],[],[]
             for row in reader:
                 time_list.append(float(row['time']))
                 pressure.append(float(row['pressure']))
+                vacuum.append(float(row['pressure'])*-1.0)
                 units.append(row['units'])
         time_normalized = []
         for t in time_list:
             time_normalized.append(abs(t-time_list[0]))
         fig_vacuum = plt.figure()
-        plt.plot(time_normalized,-pressure,color='black')
+        plt.plot(time_normalized,vacuum,color='black')
         plt.xlabel('Time (s)')
         plt.ylabel('Vacuum ('+units[0]+')')
         fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'))
         max_pressure = max(pressure)
-        max_vacuum = min(pressure)
+        max_vacuum = max(vacuum)
         print('Max Pressure:',max_pressure)
         print('Max Vacuum:',max_vacuum)
 
