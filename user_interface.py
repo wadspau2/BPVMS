@@ -1,5 +1,6 @@
 import numpy as np
-import matplotlib,time,board,csv,os
+import matplotlib.pyplot as plt
+import time,board,csv,os
 from controller import controller
 import adafruit_lps35hw
 
@@ -69,11 +70,11 @@ class csv_writer:
             for index,split in enumerate(split_folder):
                 if split == 'Test':
                     max_folder_num = max(max_folder_num,int(split_folder[index+1])+1)
-        test_str = 'Test_'+str(max_folder_num)
-        test_folder = os.path.join(data_folder,test_str)
+        self.test_str = 'Test_'+str(max_folder_num)
+        test_folder = os.path.join(data_folder,self.test_str)
         print('Test Folder:',test_folder)
         os.mkdir(test_folder)
-        GUI.test_str = test_str
+        GUI.test_str = self.test_str
         self.file_path = os.path.join(test_folder,'data.csv')
         self.write_file = open(self.file_path,'w')
         self.writer = csv.writer(self.write_file,delimiter=',')
@@ -104,9 +105,12 @@ class csv_writer:
                 time_list.append(row['time'])
                 pressure.append(row['pressure'])
                 units.append(row['units'])
-        print('time_list:',time_list)
-        print('pressure:',pressure)
-        print('units:',units)
+        time_normalized = []
+        for t in time_list:
+            time_normalized.append(abs(t-time_list[0]))
+        fig_pressure = plt.figure()
+        plt.plot(time_normalized,pressure)
+        fig.savefig(self.test_str + '.png')
 
 
     def write_line(self,time,pressure,units):
