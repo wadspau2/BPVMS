@@ -108,11 +108,15 @@ class csv_writer:
         time_normalized = []
         for t in time_list:
             time_normalized.append(abs(t-time_list[0]))
-        fig_pressure = plt.figure()
-        plt.plot(time_normalized,pressure,color='black')
+        fig_vacuum = plt.figure()
+        plt.plot(time_normalized,-pressure,color='black')
         plt.xlabel('Time (s)')
         plt.ylabel('Vacuum ('+units[0]+')')
-        fig_pressure.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'))
+        fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'))
+        max_pressure = max(pressure)
+        max_vacuum = min(pressure)
+        print('Max Pressure:',max_pressure)
+        print('Max Vacuum:',max_vacuum)
 
 
     def write_line(self,time,pressure,units):
