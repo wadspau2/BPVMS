@@ -251,9 +251,9 @@ class screen:
         menu7_draw.text(self.title_location,self.user_interface.test_str + " Results",font=self.fnt,fill=self.color_white)
         menu7_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         menu7_draw.text((self.line_start,self.line_list[0]),'Max Vacuum:',font=self.fnt,fill=self.color_white)
-        menu7_draw.text((self.line_start+10,self.line_list[1]),'{:.3f}'.format(results[2]),font=self.fnt,fill=self.color_white)
+        menu7_draw.text((self.line_start+10,self.line_list[1]),'{:.3f} {}'.format(results[2],results[4]),font=self.fnt,fill=self.color_white)
         menu7_draw.text((self.line_start,self.line_list[2]),'Avg Vacuum:',font=self.fnt,fill=self.color_white)
-        menu7_draw.text((self.line_start+10,self.line_list[3]),'{:.3f}'.format(results[3]),font=self.fnt,fill=self.color_white)
+        menu7_draw.text((self.line_start+10,self.line_list[3]),'{:.3f} {}'.format(results[3],results[4]),font=self.fnt,fill=self.color_white)
         menu7_draw.polygon([(0,self.line_list[4]),
                             (self.width,self.line_list[4]),
                             (self.width,self.line_list[5]),
