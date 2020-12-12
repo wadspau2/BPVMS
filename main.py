@@ -222,7 +222,7 @@ def main():
                     if time.time() >= GUI.test_end_time:
                         GUI.run_test = False
                         max_pressure,max_vacuum, = GUI.csv_writer.analyze_data()
-                        GUI.current_menu = 2
+                        GUI.current_menu = 7
                         GUI.controller.screen.clear_screen()
             if not GUI.controller.button_Up.value:
                 if not GUI.button_pressed:
@@ -243,6 +243,17 @@ def main():
                     GUI.run_test = False
                     GUI.csv_writer.analyze_data()
                     GUI.current_menu = 2
+                    GUI.controller.screen.clear_screen()
+                GUI.button_pressed = True
+            else:
+                GUI.button_pressed = False
+        if GUI.current_menu == 7:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
+            GUI.controller.screen.draw_menu7_screen()
+            if not GUI.controller.button_Select.value:
+                if not GUI.button_pressed:
+                    GUI.current_menu = 0
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             else:

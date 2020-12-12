@@ -245,3 +245,17 @@ class screen:
             menu6_draw.text((self.line_start,self.line_list[3]),'Time Left:',font=self.fnt,fill=self.color_white)
             menu6_draw.text((self.line_start,self.line_list[4]),"{:.1f}s".format(self.user_interface.test_end_time-time.time()),font=self.fnt,fill=self.color_white)
         self.controller.display.image(self.image)
+
+    def draw_menu7_screen(self,results):
+        menu7_draw = ImageDraw.Draw(self.image)
+        menu7_draw.text(self.title_location,self.user_interface.test_str + " Results",font=self.fnt,fill=self.color_white)
+        menu7_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        menu7_draw.text((self.line_start,self.line_list[0]),'Max Vacuum: {:.3f}'.format(results[2]),font=self.fnt,fill=self.color_white)
+        menu7_draw.text((self.line_start,self.line_list[1]),'Avg Vacuum: {:.3f}'.format(results[3]),font=self.fnt,fill=self.color_white)
+        menu7_draw.polygon([(0,self.line_list[3]),
+                            (self.width,self.line_list[3]),
+                            (self.width,self.line_list[4]),
+                            (0,self.line_list[4])],
+                            fill=self.color_white)
+        menu7_draw.text((self.line_start,self.line_list[3]),'Continue',font=self.fnt,fill=self.color_black)
+        self.controller.display.image(self.image)

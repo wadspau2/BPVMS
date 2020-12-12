@@ -119,7 +119,9 @@ class csv_writer:
         max_vacuum = max(vacuum)
         avg_vacuum = statistics.mean(vacuum)
         print('Max Pressure:',max_pressure)
+        print('Average Pressure:',avg_pressure)
         print('Max Vacuum:',max_vacuum)
+        print('Average Vacuum:',avg_vacuum)
         txt_file = open(os.path.join(self.test_folder,self.test_str + '_Results.txt'),'w')
         txt_file.write(self.test_str + ' Results\n\n')
         txt_file.write('Time: {} s\n'.format(int(time_list[-1])))
@@ -128,7 +130,8 @@ class csv_writer:
         txt_file.write('Max Vacuum: {:.3f} {}\n'.format(max_vacuum,units[0]))
         txt_file.write('Average Vacuum: {:.3f} {}\n'.format(avg_vacuum,units[0]))
         txt_file.close()
-        return max_pressure,max_vacuum
+        results = [max_pressure,avg_pressure,max_vacuum,avg_vacuum,units[0]]
+        return results
 
 
     def write_line(self,time,pressure,units):
