@@ -71,11 +71,11 @@ class csv_writer:
                 if split == 'Test':
                     max_folder_num = max(max_folder_num,int(split_folder[index+1])+1)
         self.test_str = 'Test_'+str(max_folder_num)
-        test_folder = os.path.join(data_folder,self.test_str)
-        print('Test Folder:',test_folder)
-        os.mkdir(test_folder)
+        self.test_folder = os.path.join(data_folder,self.test_str)
+        print('Test Folder:',self.test_folder)
+        os.mkdir(self.test_folder)
         GUI.test_str = self.test_str
-        self.file_path = os.path.join(test_folder,'data.csv')
+        self.file_path = os.path.join(self.test_folder,'data.csv')
         self.write_file = open(self.file_path,'w')
         self.writer = csv.writer(self.write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
@@ -110,7 +110,7 @@ class csv_writer:
             time_normalized.append(abs(t-time_list[0]))
         fig_pressure = plt.figure()
         plt.plot(time_normalized,pressure)
-        fig_pressure.savefig(self.test_str + '.png')
+        fig_pressure.savefig(os.path.join(self.test_folder,self.test_str + '.png'))
 
 
     def write_line(self,time,pressure,units):
