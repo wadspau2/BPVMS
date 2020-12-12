@@ -110,7 +110,7 @@ class csv_writer:
             time_normalized.append(abs(t-time_list[0]))
         fig_pressure = plt.figure()
         plt.plot(time_normalized,pressure)
-        fig.savefig(self.test_str + '.png')
+        fig_pressure.savefig(self.test_str + '.png')
 
 
     def write_line(self,time,pressure,units):
