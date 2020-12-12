@@ -104,7 +104,7 @@ class csv_writer:
             for row in reader:
                 time_list.append(float(row['time']))
                 pressure.append(float(row['pressure']))
-                units.append(float(row['units']))_
+                units.append(float(row['units']))
         time_normalized = []
         for t in time_list:
             time_normalized.append(abs(t-time_list[0]))
