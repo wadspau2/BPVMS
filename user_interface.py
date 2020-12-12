@@ -115,7 +115,7 @@ class csv_writer:
         plt.ylabel('Vacuum ('+units[0]+')')
         fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'))
         fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.pdf'))
-        fig_vacuum.savefig(os.path.join(self.test_folder,slef.test_str + '_Pressure.png'))
+        fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.png'))
         max_pressure = max(pressure)
         avg_pressure = statistics.mean(pressure)
         max_vacuum = max(vacuum)
