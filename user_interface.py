@@ -102,9 +102,9 @@ class csv_writer:
             reader = csv.DictReader(csvfile)
             time_list,pressure,units = [],[],[]
             for row in reader:
-                time_list.append(row['time'])
-                pressure.append(row['pressure'])
-                units.append(row['units'])
+                time_list.append(float(row['time']))
+                pressure.append(float(row['pressure']))
+                units.append(float(row['units']))_
         time_normalized = []
         for t in time_list:
             time_normalized.append(abs(t-time_list[0]))
