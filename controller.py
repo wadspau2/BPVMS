@@ -52,6 +52,7 @@ class controller:
             if 'usb' in d and 'part' not in d:
                 path = os.path.join(basedir,d)
                 link = os.readlink(path)
+                print(link)
                 print('/dev/',os.path.basename(link))
                 temp_found = True
                 self.mount_USB(self,os.path.basename(link))
