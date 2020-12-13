@@ -54,9 +54,16 @@ class controller:
                 link = os.readlink(path)
                 print('/dev/',os.path.basename(link))
                 temp_found = True
+                self.mount_USB(self)
         self.USB_found = temp_found
         self.USB_last_time = time.time()
         return temp_found
+
+    def mount_USB(self,USB_name,mount_location='/mnt/DATA_USB'):
+        if not os.path.ismount(mount_location):
+            mount_str = '/dev/' + USB_name
+            cmd_str = 'mount ' + mount_str + ' ' + mount_location
+            os.system(cmd_str)
 
 class screen:
     def __init__(self,controller,user_interface):
