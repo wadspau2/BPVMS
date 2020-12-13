@@ -54,7 +54,7 @@ class controller:
                 link = os.readlink(path)
                 print('/dev/',os.path.basename(link))
                 temp_found = True
-                self.mount_USB(self)
+                self.mount_USB(self,os.path.basename(link))
         self.USB_found = temp_found
         self.USB_last_time = time.time()
         return temp_found
