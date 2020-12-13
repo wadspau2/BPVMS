@@ -75,7 +75,7 @@ class csv_writer:
         self.test_str = 'Test_'+str(max_folder_num)
         self.test_folder = os.path.join(data_folder,self.test_str)
         print('Test Folder:',self.test_folder)
-        os.mkdir(self.test_folder)
+        os.mkdir('sudo '+self.test_folder)
         GUI.test_str = self.test_str
         self.file_path = os.path.join(self.test_folder,'data.csv')
         self.write_file = open(self.file_path,'w')
