@@ -62,7 +62,7 @@ class user_interface:
 class csv_writer:
     def __init__(self,GUI):
         # USB_path = self.get_USB_path()
-        self.USB_folder = 'mnt/DATA_USB/data'
+        self.USB_folder = '/mnt/DATA_USB/data'
         # data_folder = os.getcwd()+'/data'
         data_folder = self.USB_folder
         directory_contents = os.listdir(data_folder)
