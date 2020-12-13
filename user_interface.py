@@ -64,7 +64,7 @@ class csv_writer:
         # USB_path = self.get_USB_path()
         self.USB_folder = 'mnt/DATA_USB/data'
         # data_folder = os.getcwd()+'/data'
-        data_foler = self.USB_folder
+        data_folder = self.USB_folder
         directory_contents = os.listdir(data_folder)
         max_folder_num = 0
         for folder in directory_contents:
