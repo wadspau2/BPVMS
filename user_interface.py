@@ -75,10 +75,10 @@ class csv_writer:
         self.test_str = 'Test_'+str(max_folder_num)
         self.test_folder = os.path.join(data_folder,self.test_str)
         print('Test Folder:',self.test_folder)
-        os.system('sudo mkdir '+self.test_folder)
+        os.mkdir(self.test_folder,mode='w+'')
         GUI.test_str = self.test_str
         self.file_path = os.path.join(self.test_folder,'data.csv')
-        self.write_file = open(self.file_path,'w')
+        self.write_file = open(self.file_path,mode='w+')
         self.writer = csv.writer(self.write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
 
