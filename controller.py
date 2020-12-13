@@ -1,7 +1,7 @@
 import time
 import random
 from colorsys import hsv_to_rgb
-import board,os,time
+import board,os,time,subprocess
 from digitalio import DigitalInOut, Direction
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
@@ -60,6 +60,9 @@ class controller:
         return temp_found
 
     def mount_USB(self,USB_name,mount_location='/mnt/DATA_USB'):
+        subprocess_cmd_str = 'mountpoint -q ' + mount_location
+        is_mounted = subprocess.call(subprocess_cmd_str,shell=True)
+        print('is_mounted:',is_mounted)
         if not os.path.ismount(mount_location):
             mount_str = '/dev/' + str(USB_name)
             cmd_str = 'sudo mount ' + mount_str + ' ' + mount_location
