@@ -62,7 +62,9 @@ class user_interface:
 class csv_writer:
     def __init__(self,GUI):
         # USB_path = self.get_USB_path()
-        data_folder = os.getcwd()+'/data'
+        self.USB_folder = 'mnt/DATA_USB/data'
+        # data_folder = os.getcwd()+'/data'
+        data_foler = self.USB_folder
         directory_contents = os.listdir(data_folder)
         max_folder_num = 0
         for folder in directory_contents:
@@ -113,9 +115,12 @@ class csv_writer:
         plt.plot(time_normalized,vacuum,color='black')
         plt.xlabel('Time (s)')
         plt.ylabel('Vacuum ('+units[0]+')')
-        fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'),bbox_inches="tight")
-        fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.pdf'),bbox_inches="tight")
-        fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.png'),bbox_inches="tight",dpi=300)
+        # fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.svg'),bbox_inches="tight")
+        # fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.pdf'),bbox_inches="tight")
+        # fig_vacuum.savefig(os.path.join(self.test_folder,self.test_str + '_Pressure.png'),bbox_inches="tight",dpi=300)
+        fig_vacuum.savefig(os.path.join(self.USB_folder,self.test_str + '_Pressure.svg'),bbox_inches="tight")
+        fig_vacuum.savefig(os.path.join(self.USB_folder,self.test_str + '_Pressure.pdf'),bbox_inches="tight")
+        fig_vacuum.savefig(os.path.join(self.USB_folder,self.test_str + '_Pressure.png'),bbox_inches="tight",dpi=300)
         max_pressure = max(pressure)
         avg_pressure = statistics.mean(pressure)
         max_vacuum = max(vacuum)
@@ -124,7 +129,7 @@ class csv_writer:
         print('Average Pressure:',avg_pressure)
         print('Max Vacuum:',max_vacuum)
         print('Average Vacuum:',avg_vacuum)
-        txt_file = open(os.path.join(self.test_folder,self.test_str + '_Results.txt'),'w')
+        txt_file = open(os.path.join(self.USB_folder,self.test_str + '_Results.txt'),'w')
         txt_file.write(self.test_str + ' Results\n\n')
         txt_file.write('Time: {} s\n'.format(int(time_list[-1]-time_list[0])))
         txt_file.write('Max Pressure: {:.3f} {}\n'.format(max_pressure,units[0]))
