@@ -62,7 +62,7 @@ class controller:
     def mount_USB(self,USB_name,mount_location='/mnt/DATA_USB'):
         if not os.path.ismount(mount_location):
             mount_str = '/dev/' + str(USB_name)
-            cmd_str = 'mount ' + mount_str + ' ' + mount_location
+            cmd_str = 'sudo mount ' + mount_str + ' ' + mount_location
             print(cmd_str)
             os.system(cmd_str)
 
