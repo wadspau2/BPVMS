@@ -52,7 +52,7 @@ class controller:
             if 'usb' in d and 'part' not in d:
                 path = os.path.join(basedir,d)
                 link = os.readlink(path)
-                # print('/dev/',os.path.basename(link))
+                print('/dev/',os.path.basename(link))
                 temp_found = True
         self.USB_found = temp_found
         self.USB_last_time = time.time()
