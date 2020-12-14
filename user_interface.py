@@ -79,7 +79,7 @@ class csv_writer:
         mkdir_str = 'sudo mkdir ' + self.test_folder
         os.system(mkdir_str)
         chmod_str = 'chmod ugo+rwx ' + self.test_folder
-        os.chmod(chmod_str)
+        os.system(chmod_str)
         GUI.test_str = self.test_str
         self.file_path = os.path.join(self.test_folder,'data.csv')
         self.write_file = open(self.file_path,mode='w+')
