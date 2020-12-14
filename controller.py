@@ -66,7 +66,7 @@ class controller:
         print('is_mounted:',is_mounted)
         if not os.path.ismount(mount_location):
             mount_str = '/dev/' + str(USB_name)
-            cmd_str = 'sudo mount ' + mount_str + ' ' + mount_location
+            cmd_str = 'sudo mount ' + mount_str + ' ' + mount_location + ' -o umask=000'
             print(cmd_str)
             os.system(cmd_str)
 
