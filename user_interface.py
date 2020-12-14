@@ -82,7 +82,8 @@ class csv_writer:
         os.system(chmod_str)
         GUI.test_str = self.test_str
         self.file_path = os.path.join(self.test_folder,'data.csv')
-        self.write_file = open(self.file_path,mode='w+')
+        print('file_path:',self.file_path)
+        self.write_file = open(self.file_path,'a')
         self.writer = csv.writer(self.write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
 
