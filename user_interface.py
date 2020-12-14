@@ -76,6 +76,7 @@ class csv_writer:
         self.test_folder = os.path.join(data_folder,self.test_str)
         print('Test Folder:',self.test_folder)
         # os.mkdir(self.test_folder,mode=0o777)
+        os.umask(0)
         mkdir_str = 'sudo mkdir ' + self.test_folder
         os.system(mkdir_str)
         chmod_str = 'chmod ugo+rwx ' + self.test_folder
@@ -83,7 +84,7 @@ class csv_writer:
         GUI.test_str = self.test_str
         self.file_path = os.path.join(self.test_folder,'data.csv')
         print('file_path:',self.file_path)
-        self.write_file = open(self.file_path,'a')
+        self.write_file = open(self.file_path,'w')
         self.writer = csv.writer(self.write_file,delimiter=',')
         self.writer.writerow(['time','pressure','units'])
 
