@@ -82,7 +82,7 @@ class csv_writer:
         GUI.test_str = self.test_str
         self.file_path = os.path.join(self.test_folder,'data.csv')
         print('file_path:',self.file_path)
-        touch_str = 'touch ' + self.file_path
+        touch_str = 'sudo touch ' + self.file_path
         os.system(touch_str)
         chmod_str = 'chmod ugo+rwx ' + self.file_path
         os.system(chmod_str)
