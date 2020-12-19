@@ -92,7 +92,7 @@ class screen:
         self.menu4_line_index = 0
         self.menu6_line_index = 0
         self.menu0_lockout = True
-        self.menu1_options = ['Run Test','Change Units','Reset LPS35','Shutdown']
+        self.menu1_options = ['Run Test','Change Units','Reset LPS35','Eject USB','Shutdown']
         self.menu2_options = [str(self.user_interface.test_lengths[0])+'s',str(self.user_interface.test_lengths[1])+'s',str(self.user_interface.test_lengths[2])+'s','Manual']
         self.menu3_options = ['mmHg','PSI','kPa']
         self.menu4_options = ['Zero_LPS35','Abs_LPS35']
@@ -149,6 +149,7 @@ class screen:
         menu1_draw.text((self.line_start,self.line_list[1]),self.menu1_options[1],font=self.fnt,fill=self.color_white if self.menu1_line_index != 1 else self.color_black)
         menu1_draw.text((self.line_start,self.line_list[2]),self.menu1_options[2],font=self.fnt,fill=self.color_white if self.menu1_line_index != 2 else self.color_black)
         menu1_draw.text((self.line_start,self.line_list[3]),self.menu1_options[3],font=self.fnt,fill=self.color_white if self.menu1_line_index != 3 else self.color_black)
+        menu1_draw.text((self.line_start,self.line_list[4]),self.menu1_options[4],font=self.fnt,fill=self.color_white if self.menu1_line_index != 4 else self.color_black)
         menu1_draw.polygon([(0,self.line_list[5]),
                             (self.width,self.line_list[5]),
                             (self.width,self.line_list[6]),
