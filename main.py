@@ -261,6 +261,7 @@ def main():
             else:
                 GUI.button_pressed = False
     if GUI.current_menu == 8:
+        print('HERE')
         if GUI.previous_menu != GUI.current_menu:
             GUI.previous_menu = GUI.current_menu
             lock = GUI.draw_menu8_screen(True)
