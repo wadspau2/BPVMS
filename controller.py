@@ -252,6 +252,11 @@ class screen:
         menu5_draw.text(self.title_location,'SHUT DOWN',font=self.fnt,fill=self.color_white)
         menu5_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         if self.user_interface.shutdown_end_time is not None:
+            menu5_draw.polygon([(0,self.line_list[2]),
+                                (self.width,self.line_list[2]),
+                                (self.width,self.line_list[3]),
+                                (0,self.line_list[3])],
+                                fill=self.color_black)
             menu5_draw.text((self.line_start,self.line_list[1]),'Shutdown in:',font=self.fnt,fill=self.color_white)
             menu5_draw.text((self.line_start,self.line_list[2]),"{:.1f}s".format(self.user_interface.shutdown_end_time-time.time()),font=self.fnt,fill=self.color_white)
             menu5_draw.polygon([(0,self.line_list[4]),

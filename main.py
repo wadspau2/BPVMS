@@ -202,9 +202,9 @@ def main():
                 GUI.shutdown_start_time = time.time()
                 GUI.shutdown_end_time = GUI.shutdown_start_time + 3.0
             GUI.controller.screen.draw_menu5_screen()
-            if not GUI.controller.button_Left.value:
+            if not GUI.controller.button_Select.value:
                 if not GUI.button_pressed:
-                    GUI.current_menu = 0
+                    GUI.current_menu = 1
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             else:
