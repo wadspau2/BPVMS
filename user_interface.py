@@ -132,7 +132,7 @@ class csv_writer:
         print('Average Pressure:',avg_pressure)
         print('Max Vacuum:',max_vacuum)
         print('Average Vacuum:',avg_vacuum)
-        txt_file = open(os.path.join(self.USB_folder,self.test_str + '_Results.txt'),'w')
+        txt_file = open(os.path.join(self.USB_folder,self.test_folder,self.test_str + '_Results.txt'),'w')
         txt_file.write(self.test_str + ' Results\n\n')
         txt_file.write('Time: {} s\n'.format(int(time_list[-1]-time_list[0])))
         txt_file.write('Max Pressure: {:.3f} {}\n'.format(max_pressure,units[0]))
