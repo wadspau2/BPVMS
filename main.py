@@ -200,6 +200,8 @@ def main():
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
             GUI.controller.screen.draw_menu5_screen()
+            GUI.shutdown_start_time = time.time()
+            GUI.shutdown_end_time = GUI.test_start_time + 3.0
             if not GUI.controller.button_Left.value:
                 if not GUI.button_pressed:
                     GUI.current_menu = 0

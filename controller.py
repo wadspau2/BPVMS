@@ -81,6 +81,10 @@ class controller:
         is_mounted = subprocess.call(subprocess_cmd_str,shell=True)
         return is_mounted
 
+    def shutdown(self):
+        cmd_str = 'sudo shutdown -h now'
+        os.system(cmd_str)
+
 class screen:
     def __init__(self,controller,user_interface):
         self.controller = controller
@@ -247,6 +251,17 @@ class screen:
         menu5_draw = ImageDraw.Draw(self.image)
         menu5_draw.text(self.title_location,'SHUT DOWN',font=self.fnt,fill=self.color_white)
         menu5_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        if self.user_interface.shutdown_end_time is not None:
+            menu5_draw.text((self.line_start,self.line_list[1]),'Shutdown in:',font=self.fnt,fill=self.color_white)
+            menu5_draw.text((self.line_start,self.line_list[2]),"{:.1f}s".format(self.user_interface.shutdown_end_time-time.time()),font=self.fnt,fill=self.color_white)
+            menu5_draw.polygon([(0,self.line_list[4]),
+                                (self.width,self.line_list[4]),
+                                (self.width,self.line_list[5]),
+                                (0,self.line_list[5])],
+                                fill=self.color_white)
+            menu5_draw.text((self.line_start,self.line_list[4]),'Cancel',font=self.fnt,fill=self.color_black)
+            if self.user_interface.shutdown_end_time-time.time() <= 0.0:
+                self.controller.shutdown()
         self.controller.display.image(self.image)
 
     def draw_menu6_screen(self):
