@@ -263,7 +263,7 @@ def main():
         if GUI.current_menu == 8:
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
-                lock = GUI.draw_menu8_screen(True)
+                lock = GUI.controller.screen.draw_menu8_screen(True)
             else:
                 lock = GUI.controller.screen.draw_menu8_screen()
             if not lock:
