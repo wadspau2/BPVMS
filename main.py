@@ -260,21 +260,20 @@ def main():
                 GUI.button_pressed = True
             else:
                 GUI.button_pressed = False
-    if GUI.current_menu == 8:
-        print('HERE')
-        if GUI.previous_menu != GUI.current_menu:
-            GUI.previous_menu = GUI.current_menu
-            lock = GUI.draw_menu8_screen(True)
-        else:
-            lock = GUI.controller.screen.draw_menu8_screen()
-        if not lock:
-            if not GUI.controller.button_Select.value:
-                if not GUI.button_pressed:
-                    GUI.current_menu = 1
-                    GUI.controller.screen.clear_screen()
-                GUI.button_pressed = True
+        if GUI.current_menu == 8:
+            if GUI.previous_menu != GUI.current_menu:
+                GUI.previous_menu = GUI.current_menu
+                lock = GUI.draw_menu8_screen(True)
             else:
-                GUI.button_pressed = False
+                lock = GUI.controller.screen.draw_menu8_screen()
+            if not lock:
+                if not GUI.controller.button_Select.value:
+                    if not GUI.button_pressed:
+                        GUI.current_menu = 1
+                        GUI.controller.screen.clear_screen()
+                    GUI.button_pressed = True
+                else:
+                    GUI.button_pressed = False
 
 if __name__ == "__main__":
     main()
