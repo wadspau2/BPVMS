@@ -76,7 +76,7 @@ class controller:
             print(cmd_str)
             os.system(cmd_str)
 
-    def is_USB_mounted(self,mount_location='/mnt/DATA_USB):
+    def is_USB_mounted(self,mount_location='/mnt/DATA_USB'):
         subprocess_cmd_str = 'mountpoint -q ' + mount_location
         is_mounted = subprocess.call(subprocess_cmd_str,shell=True)
         return is_mounted
