@@ -269,7 +269,7 @@ def main():
             if not lock:
                 if not GUI.controller.button_Select.value:
                     if not GUI.button_pressed:
-                        GUI.current_menu = 1
+                        GUI.current_menu = 0
                         GUI.controller.screen.clear_screen()
                     GUI.button_pressed = True
                 else:

@@ -293,7 +293,7 @@ class screen:
         menu8_draw.text(self.title_location,'Eject USB',font=self.fnt,fill=self.color_white)
         menu8_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
         if self.controller.is_USB_mounted():
-            menu8_draw.text((self.line_start,self.line_list[0]),'USB Ejected',font=self.fnt,fill=self.color_black)
+            menu8_draw.text((self.line_start,self.line_list[1]),'USB Ejected',font=self.fnt,fill=self.color_black)
             menu8_draw.polygon([(0,self.line_list[4]),
                                 (self.width,self.line_list[4]),
                                 (self.width,self.line_list[5]),
