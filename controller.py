@@ -70,6 +70,17 @@ class controller:
             print(cmd_str)
             os.system(cmd_str)
 
+    def unmount_USB(self,mount_location='/mnt/DATA_USB'):
+        if os.path.ismount(mount_location):
+            cmd_str = 'sudo umount ' + mount_location
+            print(cmd_str)
+            os.system(cmd_str)
+
+    def is_USB_mounted(self,mount_location='/mnt/DATA_USB):
+        subprocess_cmd_str = 'mountpoint -q ' + mount_location
+        is_mounted = subprocess.call(subprocess_cmd_str,shell=True)
+        return is_mounted
+
 class screen:
     def __init__(self,controller,user_interface):
         self.controller = controller
@@ -274,3 +285,24 @@ class screen:
                             fill=self.color_white)
         menu7_draw.text((self.line_start,self.line_list[4]),'Continue',font=self.fnt,fill=self.color_black)
         self.controller.display.image(self.image)
+
+    def draw_menu8_screen(self,unmount=False):
+        if unmount:
+            self.controller.unmount_USB()
+        menu8_draw = ImageDraw.Draw(self.image)
+        menu8_draw.text(self.title_location,'Eject USB',font=self.fnt,fill=self.color_white)
+        menu8_draw.line(self.title_line_location,fill=self.color_white,width=self.title_line_width)
+        if self.controller.is_USB_mounted():
+            menu8_draw.text((self.line_start,self.line_list[0]),'USB Ejected',font=self.fnt,fill=self.color_black)
+            menu8_draw.polygon([(0,self.line_list[4]),
+                                (self.width,self.line_list[4]),
+                                (self.width,self.line_list[5]),
+                                (0,self.line_list[5])],
+                                fill=self.color_white)
+            menu8_draw.text((self.line_start,self.line_list[4]),'Continue',font=self.fnt,fill=self.color_black)
+            lock = False
+        else:
+            menu8_draw.text((self.line_start,self.line_list[0]),'Ejecting USB',font=self.fnt,fill=self.color_black)
+            lock = True
+        self.controller.display.image(self.image)
+        return lock
