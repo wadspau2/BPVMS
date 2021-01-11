@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw,ImageFont
 from user_interface import user_interface,csv_writer
 
 _RUN_ON_PI = False
-_RATE = 10 # hz
+_RATE = 30 # hz
 
 def main():
     GUI = user_interface()

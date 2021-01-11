@@ -1,9 +1,10 @@
 # Breast Pump Vacuum Monitoring System
 
-This project was made for Allison Tolman (New Little Life) to test the vacuum performance of breast pumps. The project consists of a python script that interfaces with a controller, display, and pressure transducer.  
-The project files also include STL file for the 3D printed hardware.
+This project was made for Allison Tolman (New Little Life) to test the vacuum performance of breast pumps. The project consists of a python script that interfaces with a controller, display, and pressure transducer. The project files also include STL file for the 3D printed hardware.
 
 ## Hardware Description
+
+
 
 ## Usage
 
@@ -15,7 +16,7 @@ The project files also include STL file for the 3D printed hardware.
 
 **Run Test**
 
-The user has the option to select from three standardized test lengths (10s, 20s, and 30s) or perform a manual length test. The standardized tests will stop on there own, analyze the data, and produce graphs to the specified folder title at the top of the screen or they can be manually stopped by selecting 'Stop Test' at anytime during the test. The manual length test requires the user to end the test by selecting 'Stop Test'. Graphs, summary, and raw data are stored in the specified folder after each test.
+The user has the option to select from three standardized test lengths (10s, 20s, and 30s) or perform a manual length test. The standardized tests will stop on there own, analyze the data, and produce graphs to the specified folder, indicated at the top of the screen, or they can be manually stopped by selecting 'Stop Test' at anytime during the test. The manual length test requires the user to end the test by selecting 'Stop Test'. Graphs, summary, and raw data are stored in the specified folder after each test.
 
 **Change Units**
 
