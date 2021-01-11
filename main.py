@@ -221,6 +221,7 @@ def main():
             if (time.time()-GUI.last_test_reading) > (1/GUI.test_rate):
                 GUI.last_test_reading = time.time()
                 if (time.time()-GUI.last_test_screen_draw) > 1.0:
+                    GUI.last_test_screen_draw = time.time()
                     GUI.controller.screen.draw_menu6_screen()
                 if GUI.run_test:
                     pressure,temperature,unit = GUI.get_LPS35HW_measurement()
