@@ -15,7 +15,8 @@ class user_interface:
         self.i2c = board.I2C()
         self.LPS35HW = adafruit_lps35hw.LPS35HW(self.i2c)
         self.LPS35HW.zero_pressure()
-        self.LPS35HW.set_data_rate(self.LPS35HW.LPS35HW_RATE_50_HZ)
+        self.data_rate_object = adafruit_lps35hw.DataRate
+        self.LPS35HW.data_rate = self.data_rate_object.RATE_50_HZ
         self.test_lengths = [10,20,30]
         self.test_start_time = None
         self.test_end_time = None
