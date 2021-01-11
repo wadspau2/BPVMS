@@ -9,7 +9,7 @@ _RUN_ON_PI = False
 _RATE = 30 # hz
 
 def main():
-    GUI = user_interface()
+    GUI = user_interface(test_rate=_RATE)
     while GUI.run:
         # Start-up Menu
         if GUI.current_menu == 0:

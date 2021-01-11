@@ -5,7 +5,7 @@ from controller import controller
 import adafruit_lps35hw
 
 class user_interface:
-    def __init__(self):
+    def __init__(self,test_rate=10):
         self.run = True
         self.current_line = 0
         self.current_menu = 0
@@ -18,7 +18,7 @@ class user_interface:
         self.test_lengths = [10,20,30]
         self.test_start_time = None
         self.test_end_time = None
-        self.test_rate = 10 # hz
+        self.test_rate = test_rate # hz
         self.last_test_screen_draw = None
         self.run_test = False
         self.controller = controller(self)
