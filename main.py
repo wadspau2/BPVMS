@@ -89,24 +89,28 @@ def main():
                         GUI.test_end_time = GUI.test_start_time + GUI.test_lengths[0]
                         GUI.current_menu = 6
                         GUI.last_test_screen_draw = time.time()
+                        GUI.last_test_reading = time.time()
                     elif GUI.controller.screen.menu2_line_index == 1:
                         GUI.run_test = True
                         GUI.test_start_time = time.time()
                         GUI.test_end_time = GUI.test_start_time + GUI.test_lengths[1]
                         GUI.current_menu = 6
                         GUI.last_test_screen_draw = time.time()
+                        GUI.last_test_reading = time.time()
                     elif GUI.controller.screen.menu2_line_index == 2:
                         GUI.run_test = True
                         GUI.test_start_time = time.time()
                         GUI.test_end_time = GUI.test_start_time + GUI.test_lengths[2]
                         GUI.current_menu = 6
                         GUI.last_test_screen_draw = time.time()
+                        GUI.last_test_reading = time.time()
                     elif GUI.controller.screen.menu2_line_index == 3:
                         GUI.run_test = True
                         GUI.test_start_time = time.time()
                         GUI.test_end_time = None
                         GUI.current_menu = 6
                         GUI.last_test_screen_draw = time.time()
+                        GUI.last_test_reading = time.time()
                     GUI.controller.screen.clear_screen()
                 GUI.button_pressed = True
             elif not GUI.controller.button_Left.value:
@@ -214,9 +218,10 @@ def main():
             if GUI.previous_menu != GUI.current_menu:
                 GUI.previous_menu = GUI.current_menu
                 GUI.csv_writer = csv_writer(GUI)
-            if (time.time()-GUI.last_test_screen_draw) > (1/GUI.test_rate):
-                GUI.last_test_screen_draw = time.time()
-                GUI.controller.screen.draw_menu6_screen()
+            if (time.time()-GUI.last_test_reading) > (1/GUI.test_rate):
+                GUI.last_test_reading = time.time()
+                if (time.time()-GUI.last_test_screen_draw) > 1.0:
+                    GUI.controller.screen.draw_menu6_screen()
                 if GUI.run_test:
                     pressure,temperature,unit = GUI.get_LPS35HW_measurement()
                     GUI.csv_writer.write_line(time.time(),
