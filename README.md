@@ -7,6 +7,8 @@ This project was made for Allison Tolman (New Little Life) to test the vacuum pe
 ### Materials
 - Raspberry Pi 4 and power supply
 - USB Stick
+- Color TFT Bonnet + Joystick Add-on https://www.adafruit.com/product/4506
+- STEMMA QT Cable https://www.adafruit.com/product/4210
 - Adafruit LPS33HW Pressure Sensor w/ STEMMA QT https://www.adafruit.com/product/4414
 - 3/32" ID, 5/32" OD Poly Tubing https://www.mcmaster.com/5648K23/
 - Ecoflex 00-30 Super Soft Platinum Silicone https://www.amazon.com/gp/product/B00CA5VY3U/ref=ppx_yo_dt_b_asin_title_o03_s02?ie=UTF8&th=1
