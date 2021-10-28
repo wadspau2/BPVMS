@@ -4,15 +4,24 @@ This project was made for Allison Tolman (New Little Life) to test the vacuum pe
 
 ## Hardware Description
 
-# Materials
-- Raspberry Pi 4
+### Materials
+- Raspberry Pi 4 and power supply
 - USB Stick
 - Adafruit LPS33HW Pressure Sensor w/ STEMMA QT https://www.adafruit.com/product/4414
 - 3/32" ID, 5/32" OD Poly Tubing https://www.mcmaster.com/5648K23/
 - Ecoflex 00-30 Super Soft Platinum Silicone https://www.amazon.com/gp/product/B00CA5VY3U/ref=ppx_yo_dt_b_asin_title_o03_s02?ie=UTF8&th=1
 - CRC Silicone Mold Release Spray https://www.amazon.com/gp/product/B0013IZSDM/ref=ppx_yo_dt_b_asin_title_o03_s01?ie=UTF8&psc=1
+- 2.5mm and 3mm Machine Screws
+- 3mm nuts
 
-
+### Assembly
+1) All STP files are designed to be 3D printed in PLA or similar material.
+2) Tap Raspberry Pi and Pressure Sensor mounting holes at 2.5mm. Tap all other holes at 3mm.
+3) Smooth the inside of the ExternalMold piece, coat with mold release, and attach to the VerticalMount.
+4) Place the tubing through the hole in the VerticalMount to the inside top surface of the ExternalMold piece.
+5) Mix and pour the silicone into the ExternalMold cavity to create the soft interface. Let cure for recommended time.
+6) Mount Raspberry Pi and Pressure Sensor as shown (see RearView_.jpg)
+7) Connect Pressure Sensor to Raspberry Pi via the STEMMA cable. Insert the other end of the tubing into the pressure sensor.
 
 ## Usage
 
