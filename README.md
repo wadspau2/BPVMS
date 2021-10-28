@@ -4,6 +4,14 @@ This project was made for Allison Tolman (New Little Life) to test the vacuum pe
 
 ## Hardware Description
 
+# Materials
+- Raspberry Pi 4
+- USB Stick
+- Adafruit LPS33HW Pressure Sensor w/ STEMMA QT https://www.adafruit.com/product/4414
+- 3/32" ID, 5/32" OD Poly Tubing https://www.mcmaster.com/5648K23/
+- Ecoflex 00-30 Super Soft Platinum Silicone https://www.amazon.com/gp/product/B00CA5VY3U/ref=ppx_yo_dt_b_asin_title_o03_s02?ie=UTF8&th=1
+- CRC Silicone Mold Release Spray https://www.amazon.com/gp/product/B0013IZSDM/ref=ppx_yo_dt_b_asin_title_o03_s01?ie=UTF8&psc=1
+
 
 
 ## Usage
