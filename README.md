@@ -1,4 +1,4 @@
-# Breast Pump Vacuum Monitoring System ("Boobie Barameter")
+# Breast Pump Vacuum Monitoring System ("Boobie Barometer")
 
 This project was made for Allison Tolman (New Little Life) to test the vacuum performance of breast pumps. The project consists of a python script that interfaces with a controller, display, and pressure transducer. The project files also include STEP files for the 3D printed hardware.
 
