@@ -2,6 +2,12 @@
 
 This project was made for Allison Tolman (New Little Life) to test the vacuum performance of breast pumps. The project consists of a python script that interfaces with a controller, display, and pressure transducer. The project files also include STEP files for the 3D printed hardware.
 
+<p float="left">
+  <img src="/IMGs/MainView_.jpg" width="400">
+  <img src="/IMGs/RearView_.jpg" width="400">
+</p>
+
+
 ## Hardware Description
 
 ### Materials
